@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyText
+  variant: MyText
+  date: 2015-07-13 17:50:23
+  location: MyText
+  rating: 9.99
+  review: MyText
+
+two:
+  brand: MyText
+  variant: MyText
+  date: 2015-07-13 17:50:23
+  location: MyText
+  rating: 9.99
+  review: MyText
