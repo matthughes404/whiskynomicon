@@ -2,10 +2,10 @@
 
 one:
   name: MyText
-  type: MyText
+  style: MyText
   proof: 1
 
 two:
   name: MyText
-  type: MyText
+  style: MyText
   proof: 1
