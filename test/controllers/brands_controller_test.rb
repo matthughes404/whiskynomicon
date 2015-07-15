@@ -13,14 +13,13 @@ class BrandsControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    skip
-    get :show
+    get :show, { id: 1 }
     assert_response :success
   end
 
   test "should update" do
-    skip
-    patch :update
+    brand = { name: "Glenfiddich" }
+    patch :update, { id: 1 }, brand
     assert_response :success
   end
 
