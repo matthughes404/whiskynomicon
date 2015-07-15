@@ -6,6 +6,7 @@ class BrandsController < ApplicationController
 
   def create
     render :json => Brand.new({ id: 1, name: params["name"], created_at: DateTime.now, updated_at: DateTime.now })
+    head :created
   end
 
   def show
@@ -19,5 +20,6 @@ class BrandsController < ApplicationController
 
   def destroy
     render :json => {}
+    head :no_content
   end
 end

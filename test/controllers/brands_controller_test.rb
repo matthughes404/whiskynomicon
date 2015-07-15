@@ -9,7 +9,7 @@ class BrandsControllerTest < ActionController::TestCase
   test "should create" do
     brand = { name: "Speyburn" }
     post 'create', brand
-    assert_response :success
+    assert_response :created
   end
 
   test "should get show" do
@@ -25,6 +25,6 @@ class BrandsControllerTest < ActionController::TestCase
 
   test "should destroy" do
     delete :destroy, { id: 1 }
-    assert_response :success
+    assert_response :no_content
   end
 end
