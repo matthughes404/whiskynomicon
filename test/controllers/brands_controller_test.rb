@@ -24,9 +24,7 @@ class BrandsControllerTest < ActionController::TestCase
   end
 
   test "should destroy" do
-    skip
-    delete :destroy
+    delete :destroy, { id: 1 }
     assert_response :success
   end
-
 end

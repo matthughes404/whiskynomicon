@@ -18,5 +18,6 @@ class BrandsController < ApplicationController
   end
 
   def destroy
+    render :json => {}
   end
 end
