@@ -157,7 +157,7 @@ Brand.create({ name: "Scapa",
   ]})
 Brand.create({ name: "Speyburn",
   variants: [
-    Variant.create({ name: "Bradan Orach", style: 'Single malt Scotch', proof: 80 })
+    Variant.create({ name: "Bradan Orach", style: 'Single malt Scotch', proof: 80 }),
     Variant.create({ name: "10yr", style: 'Single malt Scotch', proof: 80 })
   ]})
 
