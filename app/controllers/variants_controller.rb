@@ -23,8 +23,11 @@ class VariantsController < ApplicationController
   end
 
   def update
+    render :json => { id: params[:id], brand_id: params[:brand_id],
+      name: params["name"], style: params["style"], proof: params["proof"], updated_at: DateTime.now }
   end
 
   def destroy
+    head :no_content
   end
 end
