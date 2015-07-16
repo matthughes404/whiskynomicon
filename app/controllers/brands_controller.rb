@@ -25,11 +25,24 @@ class BrandsController < ApplicationController
   end
 
   def update
-    render :json => { id: params[:id], name: params["name"], updated_at: DateTime.now }
+    brand = Brand.find_by_id(params[:id])
+    if brand
+      brand.name = params[:name]
+      brand.save
+      render :json => brand
+    else
+      render :json => not_found, :status => :not_found
+    end
   end
 
   def destroy
-    head :no_content
+    brand = Brand.find_by_id(params[:id])
+    if brand
+      brand.delete
+      head :no_content
+    else
+      render :json => not_found, :status => :not_found
+    end
   end
 
   private
