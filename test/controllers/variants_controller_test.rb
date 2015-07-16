@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VariantsControllerTest < ActionController::TestCase
   test "should get index," do
-    get :index
+    get :index, { brand_id: 21 }
     assert_response :success
   end
 
@@ -12,7 +12,7 @@ class VariantsControllerTest < ActionController::TestCase
   end
 
   test "should get show," do
-    get :show
+    get :show, { brand_id: 21, id: 42 }
     assert_response :success
   end
 
