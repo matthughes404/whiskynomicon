@@ -5,8 +5,8 @@ class BrandsController < ApplicationController
   end
 
   def create
-    render :json => Brand.new({ id: 1, name: params["name"], created_at: DateTime.now, updated_at: DateTime.now })
-    head :created
+    render :json => Brand.new({ id: 1, name: params["name"], created_at: DateTime.now, updated_at: DateTime.now }),
+      :status => :created
   end
 
   def show
@@ -19,7 +19,6 @@ class BrandsController < ApplicationController
   end
 
   def destroy
-    render :json => {}
     head :no_content
   end
 end
