@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   root 'home#index'
 
-  resources :brands, :only => [:index, :create, :show, :update, :destroy] do
-    resources :variants, :only => [:index, :create, :show, :update, :destroy]
+  actions = [:index, :create, :show, :update, :destroy]
+
+  resources :brands, :only => actions do
+    resources :variants, :only => actions
   end
-  
+
+  resources :tastes, :only => actions
 end
