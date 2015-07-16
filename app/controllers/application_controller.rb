@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
     json[:errors] = new_hash
     json
   end
+
+  def not_found(input = nil)
+    if input
+      return { error: "#{input.capitalize} not found" }
+    else
+      return { error: "Not found" }
+    end
+  end
 end

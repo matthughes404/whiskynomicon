@@ -15,8 +15,13 @@ class BrandsController < ApplicationController
   end
 
   def show
-    brand = Brand.new({ id: params[:id], name: "Speyburn", created_at: DateTime.now, updated_at: DateTime.now })
-    render :json => brand
+    brand = Brand.find_by_id(params[:id])
+
+    if brand
+      render :json => brand
+    else
+      render :json => not_found, :status => :not_found
+    end
   end
 
   def update
