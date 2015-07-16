@@ -2,22 +2,22 @@ require 'test_helper'
 
 class VariantsControllerTest < ActionController::TestCase
   test "should get index," do
-    get :index,
+    get :index
     assert_response :success
   end
 
   test "should get create," do
-    get :create,
+    get :create
     assert_response :success
   end
 
   test "should get show," do
-    get :show,
+    get :show
     assert_response :success
   end
 
   test "should get update," do
-    get :update,
+    get :update
     assert_response :success
   end
 

@@ -1,14 +1,14 @@
 class VariantsController < ApplicationController
-  def index,
+  def index
   end
 
-  def create,
+  def create
   end
 
-  def show,
+  def show
   end
 
-  def update,
+  def update
   end
 
   def destroy
