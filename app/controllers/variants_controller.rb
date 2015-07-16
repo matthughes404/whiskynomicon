@@ -5,6 +5,16 @@ class VariantsController < ApplicationController
   end
 
   def create
+    render :json =>
+      Variant.new({
+        id: 999,
+        brand_id: params[:brand_id],
+        name: params["name"],
+        style: params["style"],
+        proof: params["proof"],
+        created_at: DateTime.now,
+        updated_at: DateTime.now
+      }), :status => :created
   end
 
   def show
