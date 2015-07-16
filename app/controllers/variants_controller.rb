@@ -8,6 +8,8 @@ class VariantsController < ApplicationController
   end
 
   def show
+    variant = Variant.where({ brand_id: params[:brand_id], id: params[:id] })
+    render :json => variant
   end
 
   def update
