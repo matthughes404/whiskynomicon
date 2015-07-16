@@ -5,8 +5,13 @@ class BrandsController < ApplicationController
   end
 
   def create
-    render :json => Brand.new({ id: 1, name: params["name"], created_at: DateTime.now, updated_at: DateTime.now }),
-      :status => :created
+    brand = Brand.new(brand_params)
+
+    if brand.save
+      render :json => brand, :status => :created
+    else
+      render :json => error_output(brand.errors), :status => :bad_request
+    end
   end
 
   def show
@@ -20,5 +25,10 @@ class BrandsController < ApplicationController
 
   def destroy
     head :no_content
+  end
+
+  private
+  def brand_params
+    params.permit(:name)
   end
 end
