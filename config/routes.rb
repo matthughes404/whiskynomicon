@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'variants/index,'
+
+  get 'variants/create,'
+
+  get 'variants/show,'
+
+  get 'variants/update,'
+
+  get 'variants/destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,7 +24,9 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :brands, :only => [:index, :create, :show, :update, :destroy]
+  resources :brands, :only => [:index, :create, :show, :update, :destroy] do
+    resources :variants, :only => [:index, :create, :show, :update, :destroy]
+  end
 
   # Example resource route with options:
   #   resources :products do
