@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
   root 'home#index'
+
+  mount_devise_token_auth_for 'User', at: 'auth'
 
   actions = [:index, :create, :show, :update, :destroy]
 

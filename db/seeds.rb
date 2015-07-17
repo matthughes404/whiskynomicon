@@ -162,7 +162,16 @@ Brand.create({ name: "Speyburn",
   ]})
 
 # user, taste, and bottle
-User.create({ username: 'GenBurnside', name:'Matt Hughes', email: 'matthughes.tech@gmail.com' })
+User.create({
+  uid: 'GenBurnside',
+  username: 'GenBurnside',
+  provider: 'email',
+  name:'Matt Hughes',
+  email: 'matthughes.tech@gmail.com',
+  password: 'asdfasdfasdf',
+  password_confirmation: 'asdfasdfasdf'
+})
+
 Taste.create({ user_id: 1, brand: 'Buffalo Trace', variant: '', style: 'Bourbon', proof: 80,
   location: 'Home', rating: 4, review: 'Pretty tasty and affordable bourbon', date: DateTime.new(2015,7,13,18,0,0) })
 Bottle.create({ user_id: 1, brand: 'Speyburn', variant: '10 yr', style: 'Single malt Scotch', proof: 80,
