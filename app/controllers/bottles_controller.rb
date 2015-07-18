@@ -1,16 +1,13 @@
 class BottlesController < ApplicationController
-  # placeholder until security is added
-  def id
-    1
-  end
+  before_action :authenticate_user!
 
   def index
-    render :json => Bottle.where({ user_id: id })
+    render :json => Bottle.where({ user_id: user_id })
   end
 
   def create
     bottle = Bottle.new(bottle_params)
-    bottle.user_id = id
+    bottle.user_id = user_id
 
     if bottle.save
       render :json => bottle, :status => :created
@@ -20,7 +17,7 @@ class BottlesController < ApplicationController
   end
 
   def show
-    bottle = Bottle.find_by_id(params[:id])
+    bottle = Bottle.where({ user_id: user_id, id: params[:id] }).take
 
     if bottle
       render :json => bottle
@@ -30,7 +27,7 @@ class BottlesController < ApplicationController
   end
 
   def update
-    bottle = Bottle.find_by_id(params[:id])
+    bottle = Bottle.where({ user_id: user_id, id: params[:id] }).take
 
     if bottle
       bottle.brand = params[:brand] unless params[:brand].nil?
@@ -50,7 +47,8 @@ class BottlesController < ApplicationController
   end
 
   def destroy
-    bottle = Bottle.find_by_id(params[:id])
+    bottle = Bottle.where({ user_id: user_id, id: params[:id] }).take
+
     if bottle
       bottle.delete
       head :no_content
@@ -64,5 +62,4 @@ class BottlesController < ApplicationController
     params.permit(
       [:brand, :variant, :style, :proof, :size, :cost, :purchase_date, :purchase_location, :rating, :review])
   end
-
 end

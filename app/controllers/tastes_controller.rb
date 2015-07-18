@@ -61,8 +61,4 @@ class TastesController < ApplicationController
   def taste_params
     params.permit([:brand, :variant, :style, :proof, :date, :location, :rating, :review])
   end
-
-  def user_id
-    current_user.id
-  end
 end

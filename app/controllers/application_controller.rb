@@ -24,4 +24,12 @@ class ApplicationController < ActionController::Base
       return { error: "Not found" }
     end
   end
+
+  def user_id
+    if user_signed_in?
+      current_user.id
+    else
+      nil
+    end
+  end
 end
