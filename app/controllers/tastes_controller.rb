@@ -1,16 +1,13 @@
 class TastesController < ApplicationController
-  # placeholder until security is added
-  def id
-    1
-  end
+  before_action :authenticate_user!
 
   def index
-    render :json => Taste.where({ user_id: id })
+    render :json => Taste.where({ user_id: user_id })
   end
 
   def create
     taste = Taste.new(taste_params)
-    taste.user_id = id
+    taste.user_id = user_id
 
     if taste.save
       render :json => taste, :status => :created
@@ -20,7 +17,7 @@ class TastesController < ApplicationController
   end
 
   def show
-    taste = Taste.find_by_id(params[:id])
+    taste = Taste.where({ user_id: user_id, id: params[:id] }).take
 
     if taste
       render :json => taste
@@ -30,7 +27,7 @@ class TastesController < ApplicationController
   end
 
   def update
-    taste = Taste.find_by_id(params[:id])
+    taste = Taste.where({ user_id: user_id, id: params[:id] }).take
 
     if taste
       taste.brand = params[:brand] unless params[:brand].nil?
@@ -50,7 +47,8 @@ class TastesController < ApplicationController
   end
 
   def destroy
-    taste = Taste.find_by_id(params[:id])
+    taste = Taste.where({ user_id: user_id, id: params[:id] }).take
+
     if taste
       taste.delete
       head :no_content
@@ -62,5 +60,9 @@ class TastesController < ApplicationController
   private
   def taste_params
     params.permit([:brand, :variant, :style, :proof, :date, :location, :rating, :review])
+  end
+
+  def user_id
+    current_user.id
   end
 end

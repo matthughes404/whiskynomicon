@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :tastes, :only => actions
-
   resources :bottles, :only => actions
+
+  resources :users, :only => [:show, :update, :destroy]
 end
