@@ -11,3 +11,6 @@
 /api/log/*
 !/api/log/.keep
 /api/tmp
+
+# Ignore bower files
+/ui/bower_components
