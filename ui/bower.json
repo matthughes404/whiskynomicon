@@ -1,0 +1,28 @@
+{
+  "name": "dram",
+  "version": "0.0.1",
+  "homepage": "https://github.com/GenBurnside/dram",
+  "authors": [
+    "Matt Hughes <matthughes.tech@gmail.com>"
+  ],
+  "description": "A personal whisky tasting and bottle tracker",
+  "main": "index.html",
+  "keywords": [
+    "whisky",
+    "whiskey",
+    "bourbon",
+    "scotch"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5"
+  }
+}

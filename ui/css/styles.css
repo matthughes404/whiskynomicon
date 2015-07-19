@@ -1,0 +1,20 @@
+body { background-color: #385928; color: #EAD8A8; }
+
+.jumbotron { background-color: #F2EDA7; }
+
+.jumbotron h1 { font-weight: bold; color: #18260E; }
+
+h2 { font-weight: bold; color: #CCB555; font-size: 28px; }
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: #172106;
+  margin-top: 50px;
+  padding: 15px 0;
+  font-size: 12px;
+}
+
+footer a:link, a:visited { color: #A69B03; }
+footer a:hover, a:active { color: #B9BF04; text-decoration: none; }
