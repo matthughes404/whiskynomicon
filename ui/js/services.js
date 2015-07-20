@@ -1,4 +1,4 @@
-var app = angular.module('dramServices', ['http']);
+var app = angular.module('dramServices', []);
 
 app.service('brandService', function($http) {
   this.getList = function() {
