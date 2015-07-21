@@ -1,4 +1,13 @@
-body { background-color: #385928; color: #EAD8A8; }
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: #385928;
+  color: #EAD8A8;
+  margin-bottom: 80px;
+}
 
 .jumbotron { background-color: #F2EDA7; }
 
@@ -11,7 +20,6 @@ footer {
   bottom: 0px;
   width: 100%;
   background-color: #172106;
-  margin-top: 50px;
   padding: 15px 0;
   font-size: 12px;
 }
