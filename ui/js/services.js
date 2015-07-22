@@ -22,3 +22,25 @@ app.service('brandService', ['$http', function($http) {
 
   };
 }]);
+
+app.service('variantService', ['$http', function($http) {
+  this.getList = function(brandId) {
+    return $http.get(endpoint + '/brands/' + brandId + '/variants');
+  };
+
+  this.get = function(brandId, id) {
+
+  };
+
+  this.add = function(brandId, variant) {
+
+  };
+
+  this.update = function(brandId, id, variant) {
+
+  };
+
+  this.delete = function(id) {
+
+  };
+}]);
