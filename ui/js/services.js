@@ -1,6 +1,16 @@
 var app = angular.module('dramServices', []);
 var endpoint = 'http://localhost:3000';
 
+app.service('authService', ['$http', function($http, $httpProvider) {
+  this.register = function(credentials) {
+    return $http.post(endpoint + '/auth', credentials);
+  };
+
+  this.signIn = function(credentials) {
+    return $http.post(endpoint + '/auth/sign_in', credentials);
+  };
+}]);
+
 app.service('brandService', ['$http', function($http) {
   this.getList = function() {
     return $http.get(endpoint + '/brands');
