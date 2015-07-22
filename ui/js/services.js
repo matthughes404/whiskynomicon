@@ -1,12 +1,13 @@
 var app = angular.module('dramServices', []);
+var endpoint = 'http://localhost:3000/';
 
-app.service('brandService', function($http) {
+app.service('brandService', ['$http', function($http) {
   this.getList = function() {
-
+    return $http.get(endpoint + 'brands');
   };
 
   this.get = function(id) {
-
+    return $http.get(endpoint + 'brands/' + id);
   };
 
   this.add = function(brand) {
@@ -20,7 +21,7 @@ app.service('brandService', function($http) {
   this.delete = function(id) {
 
   };
-});
+}]);
 
 app.service('variantService', function($http) {
   this.getList = function() {

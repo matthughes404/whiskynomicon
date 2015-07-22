@@ -1,5 +1,5 @@
-var app = angular.module('dramApp', ['ngRoute', 'dramControllers', 'dramServices']);
-app.constant('endpoint', 'http://localhost:3000/');
+var app = angular.module('dramApp', ['ngRoute', 'dramServices', 'dramControllers']);
+
 
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
@@ -7,6 +7,10 @@ app.config(['$routeProvider', '$locationProvider',
       when('/', {
         templateUrl: 'partials/home.html',
         controller: 'HomeController'
+      }).
+      when('/brands', {
+        templateUrl: 'partials/brands.html',
+        controller: 'BrandController'
       }).
       otherwise({
         redirectTo: '/'
