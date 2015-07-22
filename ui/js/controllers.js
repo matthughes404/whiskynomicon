@@ -5,6 +5,22 @@ app.controller('HomeController', ['$rootScope',
 
   }]);
 
+app.controller('LoginController', ['$rootScope', '$scope', 'authService',
+  function($rootScope, $scope, authService) {
+    $scope.signIn = function(credentials) {
+      authService.signIn(credentials).
+        success(function(data, status, headers) {
+          console.log(data);
+          console.log(status);
+          console.log(headers);
+        }).
+        error(function(error) {
+          console.log(error);
+        });
+    };
+  }]);
+
+
 app.controller('BrandsController', ['$rootScope', '$scope', 'brandService',
   function($rootScope, $scope, brandService) {
     brandService.getList().

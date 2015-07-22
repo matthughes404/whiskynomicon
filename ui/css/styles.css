@@ -9,6 +9,10 @@ body {
   margin-bottom: 80px;
 }
 
+input {
+  color: #000000;
+}
+
 .jumbotron { background-color: #F2EDA7; }
 
 .jumbotron h1 { font-weight: bold; color: #18260E; }
@@ -24,8 +28,8 @@ footer {
   font-size: 12px;
 }
 
-footer a:link, a:visited { color: #A69B03; }
-footer a:hover, a:active { color: #B9BF04; text-decoration: none; }
+footer a:link, footer a:visited { color: #A69B03; }
+footer a:hover, footer a:active { color: #B9BF04; text-decoration: none; }
 
 #brandList {
   padding-left: 0;
@@ -35,4 +39,13 @@ footer a:hover, a:active { color: #B9BF04; text-decoration: none; }
   margin-left: 0;
   margin-bottom: 5px;
   list-style-type: none;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"], input[type="password"] {
+  display: block;
+  margin-bottom: 15px;
 }
