@@ -10,7 +10,11 @@ app.config(['$routeProvider', '$locationProvider',
       }).
       when('/brands', {
         templateUrl: 'partials/brands.html',
-        controller: 'BrandController'
+        controller: 'BrandsController'
+      }).
+      when('/brands/:id', {
+        templateUrl: 'partials/brandDetail.html',
+        controller: 'BrandDetailController'
       }).
       otherwise({
         redirectTo: '/'

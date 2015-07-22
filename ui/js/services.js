@@ -1,13 +1,13 @@
 var app = angular.module('dramServices', []);
-var endpoint = 'http://localhost:3000/';
+var endpoint = 'http://localhost:3000';
 
 app.service('brandService', ['$http', function($http) {
   this.getList = function() {
-    return $http.get(endpoint + 'brands');
+    return $http.get(endpoint + '/brands');
   };
 
   this.get = function(id) {
-    return $http.get(endpoint + 'brands/' + id);
+    return $http.get(endpoint + '/brands/' + id);
   };
 
   this.add = function(brand) {
@@ -22,69 +22,3 @@ app.service('brandService', ['$http', function($http) {
 
   };
 }]);
-
-app.service('variantService', function($http) {
-  this.getList = function() {
-
-  };
-
-  this.get = function(id) {
-
-  };
-
-  this.add = function(variant) {
-
-  };
-
-  this.update = function(id, variant) {
-
-  };
-
-  this.delete = function(id) {
-
-  };
-});
-
-app.service('tasteService', function($http) {
-  this.getList = function(user) {
-
-  };
-
-  this.get = function(user, id) {
-
-  };
-
-  this.add = function(user, taste) {
-
-  };
-
-  this.update = function(user, id, taste) {
-
-  };
-
-  this.delete = function(user, id) {
-
-  };
-});
-
-app.service('bottleService', function($http) {
-  this.getList = function(user) {
-
-  };
-
-  this.get = function(user, id) {
-
-  };
-
-  this.add = function(user, bottle) {
-
-  };
-
-  this.update = function(user, id, bottle) {
-
-  };
-
-  this.delete = function(user, id) {
-
-  };
-});

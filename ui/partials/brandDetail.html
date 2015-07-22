@@ -1,0 +1,16 @@
+<h1>{{ brand.name }}</h1>
+
+<h4>Variants</h4>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Style</th>
+    <th>Proof</th>
+  </tr>
+  <tr ng-repeat="variant in variants">
+    <td>{{ variant.name || "Standard" }}</td>
+    <td>{{ variant.style }}</td>
+    <td>{{ variant.proof }}</td>
+  </tr>
+</table>
