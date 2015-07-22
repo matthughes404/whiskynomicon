@@ -31,5 +31,12 @@ module Dram
       g.stylesheets     false
       g.javascripts     false
     end
+
+    # Add cross-origin headers for local development
+    # This is a big security risk, and should be changed before running in a production environment!
+    config.action_dispatch.default_headers.merge!({
+      'Access-Control-Allow-Origin' => '*',
+      'Access-Control-Request-Method' => '*'
+    })
   end
 end
