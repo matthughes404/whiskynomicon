@@ -32,11 +32,16 @@ module Dram
       g.javascripts     false
     end
 
-    # Add cross-origin headers for local development
+    # Allow cross-origin requests for local development
     # This is a big security risk, and should be changed before running in a production environment!
-    config.action_dispatch.default_headers.merge!({
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => '*'
-    })
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end
