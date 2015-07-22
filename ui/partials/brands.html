@@ -1,5 +1,7 @@
 <h1>Brands</h1>
 
-<ul>
-  <li ng-repeat="brand in brands">{{ brand.name }}</li>
+<ul id="brandList">
+  <li ng-repeat="brand in brands">
+    <a href="#/brands/{{ brand.id }}">{{ brand.name }}</a>
+  </li>
 </ul>

@@ -26,3 +26,13 @@ footer {
 
 footer a:link, a:visited { color: #A69B03; }
 footer a:hover, a:active { color: #B9BF04; text-decoration: none; }
+
+#brandList {
+  padding-left: 0;
+}
+
+#brandList li {
+  margin-left: 0;
+  margin-bottom: 5px;
+  list-style-type: none;
+}
