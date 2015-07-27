@@ -8,6 +8,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'partials/home.html',
         controller: 'HomeController'
       }).
+      when('/register', {
+        templateUrl: 'partials/register.html',
+        controller: 'RegisterController'
+      }).
       when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginController'

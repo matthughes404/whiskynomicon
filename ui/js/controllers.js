@@ -5,6 +5,19 @@ app.controller('HomeController', ['$rootScope',
 
   }]);
 
+app.controller('RegisterController', ['$rootScope', '$scope', 'authService',
+  function($rootScope, $scope, authService) {
+    $scope.register = function(user) {
+      authService.register(user).
+        success(function(data, status, headers) {
+          console.log(data);
+        }).
+        error(function(error) {
+          console.log(error);
+        });
+    };
+  }]);
+
 app.controller('LoginController', ['$rootScope', '$scope', 'authService',
   function($rootScope, $scope, authService) {
     $scope.signIn = function(credentials) {
@@ -19,7 +32,6 @@ app.controller('LoginController', ['$rootScope', '$scope', 'authService',
         });
     };
   }]);
-
 
 app.controller('BrandsController', ['$rootScope', '$scope', 'brandService',
   function($rootScope, $scope, brandService) {
