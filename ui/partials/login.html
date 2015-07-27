@@ -3,11 +3,13 @@
 
   <form name="login" novalidate>
     <label>E-mail:</label>
-    <input type="text" ng-model="credentials.email" /><br />
+    <input type="text" ng-model="credentials.email" required /><br />
 
     <label>Password:</label>
-    <input type="password" ng-model="credentials.password" /><br />
+    <input type="password" ng-model="credentials.password" required /><br />
 
-    <input type="submit" class="btn" ng-click="signIn(credentials)" value="Submit" />
+    <p class="error" ng-show="error">{{ error }}</p>
+
+    <input type="submit" class="btn" ng-click="login.$valid && signIn(credentials)" value="Submit" />
   </form>
 </div>

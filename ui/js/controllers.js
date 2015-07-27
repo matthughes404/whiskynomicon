@@ -7,13 +7,23 @@ app.controller('HomeController', ['$rootScope',
 
 app.controller('RegisterController', ['$rootScope', '$scope', 'authService',
   function($rootScope, $scope, authService) {
-    $scope.register = function(user) {
+    $scope.create = function(user) {
       authService.register(user).
         success(function(data, status, headers) {
           console.log(data);
         }).
-        error(function(error) {
-          console.log(error);
+        error(function(response) {
+          console.log(response);
+
+          $scope.errors = {};
+
+          if (response.errors.password) {
+            $scope.errors.password = "Passwords must be at least 8 characters"
+          }
+
+          if (response.errors.password_confirmation) {
+            $scope.errors.passwordMatch = "Passwords do not match"
+          }
         });
     };
   }]);
@@ -27,8 +37,12 @@ app.controller('LoginController', ['$rootScope', '$scope', 'authService',
           console.log(status);
           console.log(headers);
         }).
-        error(function(error) {
-          console.log(error);
+        error(function(response) {
+          console.log(response);
+
+          if (response.errors && response.errors.length > 0) {
+            $scope.error = response.errors[0];
+          }
         });
     };
   }]);
