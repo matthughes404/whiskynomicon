@@ -9,15 +9,20 @@ body {
   margin-bottom: 80px;
 }
 
+a:link, a:visited { color: #CC8646; text-decoration: none; }
+a:hover, a:active { color: #290E0E; text-decoration: none; }
+
 input {
   color: #000000;
 }
 
+h1 { margin-bottom: 25px; }
+h2 { font-size: 28px; }
+h2, h3, h4 { font-weight: bold; color: #CCB555; }
+
 .jumbotron { background-color: #F2EDA7; }
 
-.jumbotron h1 { font-weight: bold; color: #18260E; }
-
-h2 { font-weight: bold; color: #CCB555; font-size: 28px; }
+.jumbotron h1 { font-weight: bold; color: #18260E; margin-bottom: 0; }
 
 footer {
   position: absolute;
@@ -31,6 +36,20 @@ footer {
 footer a:link, footer a:visited { color: #A69B03; }
 footer a:hover, footer a:active { color: #B9BF04; text-decoration: none; }
 
+label {
+  display: block;
+}
+
+input[type="text"], input[type="password"] {
+  display: block;
+  margin-bottom: 15px;
+}
+
+table { margin-left: -10px; }
+th, td { padding: 2px 10px; }
+
+th { font-weight: bold; color: #CCB555; }
+
 #brandList {
   padding-left: 0;
 }
@@ -39,13 +58,4 @@ footer a:hover, footer a:active { color: #B9BF04; text-decoration: none; }
   margin-left: 0;
   margin-bottom: 5px;
   list-style-type: none;
-}
-
-label {
-  display: block;
-}
-
-input[type="text"], input[type="password"] {
-  display: block;
-  margin-bottom: 15px;
 }
