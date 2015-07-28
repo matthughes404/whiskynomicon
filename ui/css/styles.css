@@ -9,6 +9,9 @@ body {
   margin-bottom: 80px;
 }
 
+.navbar { margin-bottom: 0; }
+.navbar-header a { padding-left: 0; }
+
 a:link, a:visited { color: #cc8646; text-decoration: none; }
 a:hover, a:active { color: #290e0e; text-decoration: none; }
 
@@ -20,8 +23,12 @@ h1 { margin-bottom: 25px; }
 h2 { font-size: 28px; }
 h2, h3, h4 { font-weight: bold; color: #ccb555; }
 
-.jumbotron { background-color: #f2eda7; }
+ul.nav { font-weight: bold; }
+ul.nav a:link, ul.nav a:visited { color: #ccb555; }
 
+a.navbar-brand { font-size: 22px; font-weight: bold; }
+
+.jumbotron { background-color: #f2eda7; }
 .jumbotron h1 { font-weight: bold; color: #18260e; margin-bottom: 0; }
 
 footer {

@@ -12,16 +12,30 @@
   <script src="js/controllers.js"></script>
 </head>
 <body>
+  <header class="navbar navbar-static-top container" ng-controller="NavController">
+    <div class="navbar-header">
+      <a class="navbar-brand" ng-hide="homepage" href="#/">whiskynomicon</a>
+    </div>
+    <nav>
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#/brands">Whisky List</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/login">Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <div ng-view></div>
 
   <footer>
     <div class="container">
-    <div class="col-lg-2">
-      &copy; 2015 Matt Hughes
-    </div>
-    <div class="col-lg-2 col-lg-offset-8">
-      Source code on <a href="https://github.com/GenBurnside/whiskynomicon" target="_blank">GitHub</a>
-    </div>
+      <div class="col-lg-2">
+        &copy; 2015 Matt Hughes
+      </div>
+      <div class="col-lg-2 col-lg-offset-8">
+        Source code on <a href="https://github.com/GenBurnside/whiskynomicon" target="_blank">GitHub</a>
+      </div>
     </div>
   </footer>
 </body>

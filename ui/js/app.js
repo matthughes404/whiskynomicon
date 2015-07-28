@@ -1,10 +1,10 @@
 var app = angular.module('dramApp', ['ngRoute', 'dramServices', 'dramControllers']);
 
-
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
+        homepage: true,
         templateUrl: 'partials/home.html',
         controller: 'HomeController'
       }).
@@ -26,5 +26,11 @@ app.config(['$routeProvider', '$locationProvider',
       }).
       otherwise({
         redirectTo: '/'
+      });
+  }]);
+
+app.run(['$rootScope', function($rootScope) {
+      $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+          $rootScope.homepage = current.$$route.homepage;
       });
   }]);

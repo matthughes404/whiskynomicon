@@ -5,6 +5,14 @@ app.controller('HomeController', ['$rootScope',
 
   }]);
 
+  app.controller('NavController', ['$rootScope', '$location',
+    function($rootScope, $location) {
+      console.log($location.url());
+      if ($location == '#/') {
+        alert('hooooome');
+      }
+    }]);
+
 app.controller('RegisterController', ['$rootScope', '$scope', 'authService',
   function($rootScope, $scope, authService) {
     $scope.create = function(user) {
