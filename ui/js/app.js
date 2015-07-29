@@ -24,6 +24,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'partials/brandDetail.html',
         controller: 'BrandDetailController'
       }).
+      when('/tastes', {
+        templateUrl: 'partials/tastes.html',
+        controller: 'TastesController'
+      }).
       otherwise({
         redirectTo: '/'
       });

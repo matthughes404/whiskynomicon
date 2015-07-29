@@ -5,20 +5,22 @@ app.controller('HomeController', ['$rootScope',
 
   }]);
 
-  app.controller('NavController', ['$rootScope', '$location',
-    function($rootScope, $location) {
-      console.log($location.url());
-      if ($location == '#/') {
-        alert('hooooome');
-      }
-    }]);
+app.controller('NavController', ['$rootScope', '$location',
+  function($rootScope, $location) {
+    console.log($location.url());
+    if ($location == '#/') {
+      alert('hooooome');
+    }
+  }]);
 
-app.controller('RegisterController', ['$rootScope', '$scope', 'authService',
-  function($rootScope, $scope, authService) {
+app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
+  function($rootScope, $scope, $location, authService) {
     $scope.create = function(user) {
       authService.register(user).
         success(function(data, status, headers) {
-          console.log(data);
+          var user = getUser(response, headers);
+          $rootScope.user = user;
+          $location.path('/tastes');
         }).
         error(function(response) {
           console.log(response);
@@ -36,14 +38,14 @@ app.controller('RegisterController', ['$rootScope', '$scope', 'authService',
     };
   }]);
 
-app.controller('LoginController', ['$rootScope', '$scope', 'authService',
-  function($rootScope, $scope, authService) {
+app.controller('LoginController', ['$rootScope', '$scope', '$location', 'authService',
+  function($rootScope, $scope, $location, authService) {
     $scope.signIn = function(credentials) {
       authService.signIn(credentials).
-        success(function(data, status, headers) {
-          console.log(data);
-          console.log(status);
-          console.log(headers);
+        success(function(response, status, headers) {
+          var user = getUser(response, headers);
+          $rootScope.user = user;
+          $location.path('/tastes');
         }).
         error(function(response) {
           console.log(response);
@@ -84,3 +86,32 @@ app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams',
         console.log(error);
       });
   }]);
+
+app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
+  function($rootScope, $scope, tasteService) {
+    tasteService.getList().
+      success(function(data) {
+        $scope.tastes = data;
+      }).
+      error(function(error) {
+        console.log(error);
+      });
+  }]);
+
+function getUser(response, headers) {
+  var user = {
+    //properties for UI
+    username: response.data.username,
+    name: response.data.name,
+    email: response.data.email,
+
+    //properties for auth requests
+    accessToken: headers("access-token"),
+    client: headers("client"),
+    expiry: headers("expiry"),
+    tokenType: headers("token-Type"),
+    uid: headers("uid")
+  }
+
+  return user;
+}

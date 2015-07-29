@@ -54,3 +54,39 @@ app.service('variantService', ['$http', function($http) {
 
   };
 }]);
+
+
+app.service('tasteService', ['$http', '$rootScope',
+  function($http, $rootScope) {
+    this.getList = function() {
+      return $http.get(endpoint + '/tastes/', { headers: authHeaders($rootScope.user) });
+    };
+
+    this.get = function(brandId, id) {
+
+    };
+
+    this.add = function(brandId, variant) {
+
+    };
+
+    this.update = function(brandId, id, variant) {
+
+    };
+
+    this.delete = function(id) {
+
+    };
+  }]);
+
+function authHeaders(user) {
+  var headers = {
+    'access-token': user.accessToken,
+    'client': user.client,
+    'expiry': user.expiry,
+    'token-type': user.tokenType,
+    'uid': user.uid
+  };
+
+  return headers;
+}
