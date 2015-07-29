@@ -17,7 +17,7 @@ app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'auth
   function($rootScope, $scope, $location, authService) {
     $scope.create = function(user) {
       authService.register(user).
-        success(function(data, status, headers) {
+        success(function(response, status, headers) {
           var user = getUser(response, headers);
           $rootScope.user = user;
           $location.path('/tastes');
@@ -26,6 +26,10 @@ app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'auth
           console.log(response);
 
           $scope.errors = {};
+
+          if (response.errors.email) {
+            $scope.errors.password = "This e-mail address has already been registerd"
+          }
 
           if (response.errors.password) {
             $scope.errors.password = "Passwords must be at least 8 characters"
