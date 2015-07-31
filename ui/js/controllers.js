@@ -91,6 +91,13 @@ app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams',
       });
   }]);
 
+app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userService',
+  function($rootScope, $scope, $location, userService) {
+    if ($rootScope.user == null) {
+      $location.path('/');
+    }    
+  }]);
+
 app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
   function($rootScope, $scope, tasteService) {
     tasteService.getList().

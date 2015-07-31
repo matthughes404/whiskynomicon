@@ -24,6 +24,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'partials/brandDetail.html',
         controller: 'BrandDetailController'
       }).
+      when('/welcome', {
+        templateUrl: 'partials/welcome.html',
+        controller: 'WelcomeController'
+      }).
       when('/tastes', {
         templateUrl: 'partials/tastes.html',
         controller: 'TastesController'
