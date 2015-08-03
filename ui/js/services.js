@@ -55,11 +55,44 @@ app.service('variantService', ['$http', function($http) {
   };
 }]);
 
+app.service('userService', ['$http', '$rootScope',
+  function($http, $rootScope) {
+    this.getActivity = function() {
+      return $http.get(endpoint + '/activity', { headers: authHeaders($rootScope.user) });
+    };
+
+    this.getFriendActivity = function() {
+      return $http.get(endpoint + '/friendActivity', { headers: authHeaders($rootScope.user) });
+    };
+}]);
 
 app.service('tasteService', ['$http', '$rootScope',
   function($http, $rootScope) {
     this.getList = function() {
-      return $http.get(endpoint + '/tastes/', { headers: authHeaders($rootScope.user) });
+      return $http.get(endpoint + '/tastes', { headers: authHeaders($rootScope.user) });
+    };
+
+    this.get = function(brandId, id) {
+
+    };
+
+    this.add = function(brandId, variant) {
+
+    };
+
+    this.update = function(brandId, id, variant) {
+
+    };
+
+    this.delete = function(id) {
+
+    };
+  }]);
+
+app.service('bottleService', ['$http', '$rootScope',
+  function($http, $rootScope) {
+    this.getList = function() {
+      return $http.get(endpoint + '/bottles', { headers: authHeaders($rootScope.user) });
     };
 
     this.get = function(brandId, id) {

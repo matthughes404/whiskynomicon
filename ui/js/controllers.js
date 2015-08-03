@@ -7,10 +7,7 @@ app.controller('HomeController', ['$rootScope',
 
 app.controller('NavController', ['$rootScope', '$location',
   function($rootScope, $location) {
-    console.log($location.url());
-    if ($location == '#/') {
-      alert('hooooome');
-    }
+    
   }]);
 
 app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
@@ -20,7 +17,7 @@ app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'auth
         success(function(response, status, headers) {
           var user = getUser(response, headers);
           $rootScope.user = user;
-          $location.path('/tastes');
+          $location.path('/welcome');
         }).
         error(function(response) {
           console.log(response);
@@ -49,7 +46,7 @@ app.controller('LoginController', ['$rootScope', '$scope', '$location', 'authSer
         success(function(response, status, headers) {
           var user = getUser(response, headers);
           $rootScope.user = user;
-          $location.path('/tastes');
+          $location.path('/welcome');
         }).
         error(function(response) {
           console.log(response);
@@ -91,11 +88,35 @@ app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams',
       });
   }]);
 
-app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userService',
-  function($rootScope, $scope, $location, userService) {
+app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userService', 'bottleService',
+  function($rootScope, $scope, $location, userService, bottleService) {
     if ($rootScope.user == null) {
       $location.path('/');
-    }    
+    }
+
+    userService.getActivity($scope.dateRange).
+      success(function(data) {
+        $scope.activity = data;
+      }).
+      error(function(error) {
+        console.log(error);
+      });
+
+    userService.getActivity($scope.dateRange).
+      success(function(data) {
+        $scope.friendActivity = data;
+      }).
+      error(function(error) {
+        console.log(error);
+      });
+
+    bottleService.getList().
+      success(function(data) {
+        $scope.bottles = data;
+      }).
+      error(function(error) {
+        console.log(error);
+      });
   }]);
 
 app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
