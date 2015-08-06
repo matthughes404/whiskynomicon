@@ -10,6 +10,9 @@ class TastesController < ApplicationController
     taste.user_id = user_id
 
     if taste.save
+      activity = Activity.new({ user_id: user_id, description: activity_summary("taste", taste), date: taste.date })
+      activity.save
+
       render :json => taste, :status => :created
     else
       render :json => error_output(taste.errors), :status => :bad_request

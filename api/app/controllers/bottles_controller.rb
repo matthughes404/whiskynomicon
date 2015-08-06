@@ -10,6 +10,14 @@ class BottlesController < ApplicationController
     bottle.user_id = user_id
 
     if bottle.save
+      date = bottle.created_at;
+      if (bottle.purchase_date)
+        date = bottle.purchase_date
+      end
+
+      activity = Activity.new({ user_id: user_id, description: activity_summary("bottle", bottle), date: date })
+      activity.save
+
       render :json => bottle, :status => :created
     else
       render :json => error_output(bottle.errors), :status => :bad_request

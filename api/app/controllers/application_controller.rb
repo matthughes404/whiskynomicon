@@ -32,4 +32,30 @@ class ApplicationController < ActionController::Base
       nil
     end
   end
+
+  def activity_summary(type, activity)
+    summary = ""
+    
+    if (type == "taste")
+      summary = "had a sip of #{activity.brand}"
+    end
+
+    if (type == "bottle")
+      summary = "bought a bottle of #{activity.brand}"
+    end
+
+    if (activity.variant)
+      summary += " #{activity.variant}"
+    end
+
+    if (type == "taste" && activity.location)
+      summary += " at #{activity.location}"
+    end
+
+    if (type == "bottle" && activity.purchase_location)
+      summary += " at #{activity.purchase_location}"
+    end
+
+    return summary
+  end
 end
