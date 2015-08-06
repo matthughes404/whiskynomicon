@@ -1,3 +1,5 @@
+require 'date_validator'
+
 class Bottle < ActiveRecord::Base
   belongs_to :user
   validates :brand, :presence => true
