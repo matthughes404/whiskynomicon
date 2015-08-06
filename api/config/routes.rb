@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :bottles, :only => actions
 
   resources :users, :only => [:show, :update, :destroy]
+  resources :activity, :only => [:index, :update, :destroy]
 end
