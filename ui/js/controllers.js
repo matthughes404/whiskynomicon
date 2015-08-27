@@ -7,7 +7,7 @@ app.controller('HomeController', ['$rootScope',
 
 app.controller('NavController', ['$rootScope', '$location',
   function($rootScope, $location) {
-    
+
   }]);
 
 app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
@@ -104,7 +104,14 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userS
 
     userService.getActivity($scope.dateRange).
       success(function(data) {
-        $scope.friendActivity = data;
+        var fa = data;
+        var last = data.length - 1;
+        fa.splice(last, 1);
+        var today = new Date().toISOString();
+
+        fa.push({ date: today, description: 'Placeholder for now... copying user activity.' });
+        $scope.friendActivity = fa;
+        console.log($scope.friendActivity);
       }).
       error(function(error) {
         console.log(error);

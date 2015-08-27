@@ -3,14 +3,29 @@
   <div class="row">
     <div class="col-md-4">
       <h2>Your Activity</h2>
+      <ul class="activity">
+        <li ng-repeat="a in activity | orderBy: '-date'">
+          {{ a.date | date: 'short' }} - {{ a.description }}
+        </li>
+      </ul>
     </div>
 
     <div class="col-md-4">
       <h2>Friends' Activity</h2>
+      <ul class="activity">
+        <li ng-repeat="fa in friendActivity | orderBy: '-date'">
+          {{ fa.date | date: 'short' }} - {{ fa.description }}
+        </li>
+      </ul>
     </div>
 
     <div class="col-md-4">
       <h2>Your bottle collection</h2>
+      <ul class="activity">
+        <li ng-repeat="b in bottles | orderBy: ['brand', 'variant']">
+          {{ b.brand }} {{ b.variant }}
+        </li>
+      </ul>
     </div>
   </div>
 </section>
