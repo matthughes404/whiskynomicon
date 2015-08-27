@@ -174,6 +174,19 @@ User.create({
 
 Taste.create({ user_id: 1, brand: 'Buffalo Trace', variant: '', style: 'Bourbon', proof: 80,
   location: 'Home', rating: 4, review: 'Pretty tasty and affordable bourbon', date: DateTime.new(2015,7,13,18,0,0) })
-Bottle.create({ user_id: 1, brand: 'Speyburn', variant: '10 yr', style: 'Single malt Scotch', proof: 80,
-  purchase_location: 'Total Wine', rating: 3.5, review: "It's cheap!",
-  purchase_date: DateTime.new(2015,7,1) })
+
+Bottle.create({ user_id: 1, brand: 'Speyburn', variant: '10yr', style: 'Single malt Scotch', proof: 80,
+  purchase_location: 'Total Wine', rating: 3, review: "It's cheap!",
+  purchase_date: DateTime.new(2015,7,3) })
+Bottle.create({ user_id: 1, brand: 'Oban', variant: '14yr', style: 'Single malt Scotch', proof: 96,
+  purchase_location: 'Total Wine', rating: 4,
+  purchase_date: DateTime.new(2015,8,1) })
+Bottle.create({ user_id: 1, brand: 'Lagavulin', variant: '16yr', style: 'Single malt Scotch', proof: 80,
+  purchase_location: 'Total Wine', rating: 4.5,
+  purchase_date: DateTime.new(2015,8,15) })
+Bottle.create({ user_id: 1, brand: 'Knob Creek', variant: '', style: 'Bourbon', proof: 80,
+  purchase_location: 'Total Wine', rating: 3.5, review: "Tasty bourbon!",
+  purchase_date: DateTime.new(2015,8,20) })
+
+Activity.create({ user_id: 1, description: "had a sip of Speyburn 10yr at home", date: "2015-08-15" })
+Activity.create({ user_id: 1, description: "bought a bottle of Knob Creek at Total Wine", date: "2015-08-20" })
