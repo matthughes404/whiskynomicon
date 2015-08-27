@@ -7,7 +7,9 @@ app.controller('HomeController', ['$rootScope',
 
 app.controller('NavController', ['$rootScope', '$location',
   function($rootScope, $location) {
-
+    if ($rootScope.user == null) {
+      $rootScope.home = "#/";
+    }
   }]);
 
 app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
@@ -17,6 +19,8 @@ app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'auth
         success(function(response, status, headers) {
           var user = getUser(response, headers);
           $rootScope.user = user;
+          $rootScope.authenticated = true;
+          $rootScope.home = "#/welcome";
           $location.path('/welcome');
         }).
         error(function(response) {
@@ -46,6 +50,8 @@ app.controller('LoginController', ['$rootScope', '$scope', '$location', 'authSer
         success(function(response, status, headers) {
           var user = getUser(response, headers);
           $rootScope.user = user;
+          $rootScope.authenticated = true;
+          $rootScope.home = "#/welcome";
           $location.path('/welcome');
         }).
         error(function(response) {

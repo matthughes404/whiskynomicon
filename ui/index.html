@@ -14,13 +14,13 @@
 <body>
   <header class="navbar navbar-static-top container" ng-controller="NavController">
     <div class="navbar-header">
-      <a class="navbar-brand" ng-hide="homepage" href="#/">whiskynomicon</a>
+      <a class="navbar-brand" ng-hide="homepage" ng-href="{{ home }}">whiskynomicon</a>
     </div>
     <nav>
       <ul class="nav navbar-nav navbar-left">
         <li><a href="#/brands">Whisky List</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" ng-hide="user" >
         <li><a href="#/login">Log In</a></li>
       </ul>
     </nav>
