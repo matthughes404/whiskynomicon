@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>whiskynomicon</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/styles.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="navbar navbar-static-top container" ng-controller="NavController">
-    <div class="navbar-header">
-      <a class="navbar-brand" ng-hide="homepage" ng-href="{{ home }}">whiskynomicon</a>
+  <header class="navbar navbar-static-top container" ng-controller="NavController" ng-cloak>
+    <div class="navbar-header" ng-hide="homepage">
+      <a class="navbar-brand" ng-href="{{ home }}">whiskynomicon</a>
     </div>
     <nav>
       <ul class="nav navbar-nav navbar-left">

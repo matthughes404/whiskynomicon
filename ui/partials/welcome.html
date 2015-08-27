@@ -1,29 +1,36 @@
 <section class="container">
   <h1>Welcome back, {{ user.username }}</h1>
-  <div class="row">
+  <div class="welcome row">
     <div class="col-md-4">
       <h2>Your Activity</h2>
-      <ul class="activity">
-        <li ng-repeat="a in activity | orderBy: '-date'">
-          {{ a.date | date: 'short' }} - {{ a.description }}
+      <dl>
+        <dt ng-repeat-start="a in activity | orderBy: '-date'">
+          <a href="#">{{ a.date | date: 'short' }}</a>
+        </dt>
+        <dd ng-repeat-end>
+          You {{ a.description }}.
+        </dd>
         </li>
       </ul>
     </div>
 
     <div class="col-md-4">
       <h2>Friends' Activity</h2>
-      <ul class="activity">
-        <li ng-repeat="fa in friendActivity | orderBy: '-date'">
-          {{ fa.date | date: 'short' }} - {{ fa.description }}
-        </li>
-      </ul>
+      <dl>
+        <dt ng-repeat-start="fa in friendActivity | orderBy: '-date'">
+          <a href="#">{{ fa.date | date: 'short' }}</a>
+        </dt>
+        <dd ng-repeat-end>
+          Friend {{ fa.description }}.
+        </dd>
+      </dl>
     </div>
 
-    <div class="col-md-4">
+    <div class="bottles col-md-4">
       <h2>Your bottle collection</h2>
       <ul class="activity">
         <li ng-repeat="b in bottles | orderBy: ['brand', 'variant']">
-          {{ b.brand }} {{ b.variant }}
+          <a href="#">{{ b.brand }} {{ b.variant }}</a>
         </li>
       </ul>
     </div>

@@ -115,7 +115,7 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userS
         fa.splice(last, 1);
         var today = new Date().toISOString();
 
-        fa.push({ date: today, description: 'Placeholder for now... copying user activity.' });
+        fa.push({ date: today, description: 'placeholder for now... copying user activity' });
         $scope.friendActivity = fa;
         console.log($scope.friendActivity);
       }).

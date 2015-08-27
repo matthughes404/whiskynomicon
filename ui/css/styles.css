@@ -9,6 +9,10 @@ body {
   margin-bottom: 80px;
 }
 
+[ng-cloak] {
+  display: none !important;
+}
+
 .navbar { margin-bottom: 0; }
 .navbar-header a { padding-left: 0; }
 
@@ -70,3 +74,21 @@ th { font-weight: bold; color: #ccb555; }
 .error { color:#db9a38; }
 
 .ng-touched.ng-invalid { background-color: #ffddaa; }
+
+.welcome dt {
+  font-size: 11px;
+}
+
+.welcome dd {
+  margin-bottom: 10px;
+}
+
+.welcome .bottles ul {
+  margin: 0;
+  padding: 0;
+}
+
+.welcome .bottles li {
+  list-style-type: none;
+  margin-bottom: 6px;
+}
