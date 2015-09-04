@@ -188,5 +188,5 @@ Bottle.create({ user_id: 1, brand: 'Knob Creek', variant: '', style: 'Bourbon', 
   purchase_location: 'Total Wine', rating: 3.5, review: "Tasty bourbon!",
   purchase_date: DateTime.new(2015,8,20) })
 
-Activity.create({ user_id: 1, description: "had a sip of Speyburn 10yr at home", date: "2015-08-15" })
-Activity.create({ user_id: 1, description: "bought a bottle of Knob Creek at Total Wine", date: "2015-08-20" })
+Activity.create({ user_id: 1, description: "had a sip of Speyburn 10yr at home", date: "2015-08-15", activity_type: "taste" })
+Activity.create({ user_id: 1, description: "bought a bottle of Knob Creek at Total Wine", date: "2015-08-20", activity_type: "bottle" })
