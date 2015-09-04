@@ -1,14 +1,18 @@
 var app = angular.module('dramControllers', []);
 
-app.controller('HomeController', ['$rootScope',
-  function($rootScope) {
-
+app.controller('HomeController', ['$rootScope', '$cookieStore',
+  function($rootScope, $cookieStore) {
+    $rootScope.user = $cookieStore.get('user');    
   }]);
 
-app.controller('NavController', ['$rootScope', '$location',
-  function($rootScope, $location) {
+app.controller('NavController', ['$rootScope', '$cookieStore', '$location',
+  function($rootScope, $cookieStore, $location) {
+    $rootScope.user = $cookieStore.get('user');
+
     if ($rootScope.user == null) {
       $rootScope.home = "#/";
+    } else {
+      $rootScope.home = "#/welcome";
     }
   }]);
 
@@ -43,13 +47,22 @@ app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'auth
     };
   }]);
 
-app.controller('LoginController', ['$rootScope', '$scope', '$location', 'authService',
-  function($rootScope, $scope, $location, authService) {
+app.controller('LoginController', ['$rootScope', '$scope', '$cookieStore', '$location', 'authService',
+  function($rootScope, $scope, $cookieStore, $location, authService) {
+    $rootScope.user = $cookieStore.get('user');
+
+    if ($rootScope.user != null) {
+      $rootScope.authenticated = true;
+      $rootScope.home = "#/welcome";
+      $location.path('/welcome');
+    }
+
     $scope.signIn = function(credentials) {
       authService.signIn(credentials).
         success(function(response, status, headers) {
           var user = getUser(response, headers);
           $rootScope.user = user;
+          $cookieStore.put('user', user);
           $rootScope.authenticated = true;
           $rootScope.home = "#/welcome";
           $location.path('/welcome');
@@ -95,8 +108,10 @@ app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams',
       });
   }]);
 
-app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userService', 'bottleService',
-  function($rootScope, $scope, $location, userService, bottleService) {
+app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$location', 'userService', 'bottleService',
+  function($rootScope, $scope, $cookieStore, $location, userService, bottleService) {
+    $rootScope.user = $cookieStore.get('user');
+
     if ($rootScope.user == null) {
       $location.path('/');
     }

@@ -5,6 +5,7 @@
   <title>whiskynomicon</title>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
@@ -13,7 +14,7 @@
 </head>
 <body>
   <header class="navbar navbar-static-top container" ng-controller="NavController" ng-cloak>
-    <div class="navbar-header" ng-hide="homepage">
+    <div class="navbar-header" ng-show="user">
       <a class="navbar-brand" ng-href="{{ home }}">whiskynomicon</a>
     </div>
     <nav>

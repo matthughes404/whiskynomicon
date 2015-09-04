@@ -1,4 +1,4 @@
-var app = angular.module('dramApp', ['ngRoute', 'dramServices', 'dramControllers']);
+var app = angular.module('dramApp', ['ngRoute', 'ngCookies', 'dramServices', 'dramControllers']);
 
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
