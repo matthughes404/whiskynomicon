@@ -27,6 +27,8 @@ h1 { margin-bottom: 25px; }
 h2 { font-size: 28px; }
 h2, h3, h4 { font-weight: bold; color: #ccb555; }
 
+h1 small { color: #ccb555; }
+
 ul.nav { font-weight: bold; }
 ul.nav a:link, ul.nav a:visited { color: #ccb555; }
 
@@ -110,4 +112,13 @@ th { font-weight: bold; color: #ccb555; }
 .welcome .bottles li {
   list-style-type: none;
   margin-bottom: 6px;
+}
+
+.bottle dt {
+  font-size: 11px;
+  color: #CCB555;
+}
+
+.bottle dd {
+  margin-bottom: 10px;
 }

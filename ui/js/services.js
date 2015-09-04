@@ -95,8 +95,8 @@ app.service('bottleService', ['$http', '$rootScope',
       return $http.get(endpoint + '/bottles', { headers: authHeaders($rootScope.user) });
     };
 
-    this.get = function(brandId, id) {
-
+    this.get = function(id) {
+      return $http.get(endpoint + '/bottles/' + id, { headers: authHeaders($rootScope.user) });
     };
 
     this.add = function(brandId, variant) {

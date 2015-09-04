@@ -32,6 +32,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'partials/tastes.html',
         controller: 'TastesController'
       }).
+      when('/bottles/:id', {
+        templateUrl: 'partials/bottleDetail.html',
+        controller: 'BottleDetailController'
+      }).
       otherwise({
         redirectTo: '/'
       });

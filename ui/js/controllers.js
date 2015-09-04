@@ -143,6 +143,21 @@ app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
       });
   }]);
 
+app.controller('BottleDetailController', ['$rootScope', '$scope', '$location', '$routeParams', 'bottleService',
+  function($rootScope, $scope, $location, $routeParams, bottleService) {
+    //if ($rootScope.user == null) {
+    //  $location.path('/');
+    //}
+
+    bottleService.get($routeParams.id).
+      success(function(data) {
+        $scope.bottle = data;
+      }).
+      error(function(error) {
+        console.log(error);
+      });
+  }]);
+
 function getUser(response, headers) {
   var user = {
     //properties for UI

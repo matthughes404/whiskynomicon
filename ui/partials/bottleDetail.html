@@ -1,0 +1,25 @@
+<div class="container bottle">
+  <h1>{{ bottle.brand }} <small>{{ bottle.variant }}</small></h1>
+  <dl>
+    <dt ng-show="bottle.style">Style</dt>
+    <dd ng-show="bottle.style">{{ bottle.style }}</dd>
+
+    <dt ng-show="bottle.proof">Proof</dt>
+    <dd ng-show="bottle.proof">{{ bottle.proof }}</dd>
+
+    <dt ng-show="bottle.cost">Price</dt>
+    <dd ng-show="bottle.cost">{{ bottle.cost | currency }}</dd>
+
+    <dt ng-show="bottle.purchase_date">Purchased on</dt>
+    <dd ng-show="bottle.purchase_date">{{ bottle.purchase_date | date }}</dd>
+
+    <dt ng-show="bottle.purchase_location">Purchased from</dt>
+    <dd ng-show="bottle.purchase_location">{{ bottle.purchase_location }}</dd>
+
+    <dt>Rating</dt>
+    <dd>{{ bottle.rating }} / 5</dd>
+
+    <dt ng-show="bottle.review">Review</dt>
+    <dd ng-show="bottle.review">{{ bottle.review }}</dd>
+  </dl>
+</div>

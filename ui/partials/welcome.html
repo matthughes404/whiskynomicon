@@ -39,7 +39,7 @@
       </div>
       <ul class="activity">
         <li ng-repeat="b in bottles | orderBy: ['brand', 'variant']">
-          <a href="#">{{ b.brand }} {{ b.variant }}</a>
+          <a ng-href="#/bottles/{{ b.id }}">{{ b.brand }} {{ b.variant }}</a>
         </li>
       </ul>
     </div>
