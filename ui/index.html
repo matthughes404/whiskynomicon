@@ -14,15 +14,16 @@
 </head>
 <body>
   <header class="navbar navbar-static-top container" ng-controller="NavController" ng-cloak>
-    <div class="navbar-header" ng-show="user">
+    <div class="navbar-header" ng-hide="homepage">
       <a class="navbar-brand" ng-href="{{ home }}">whiskynomicon</a>
     </div>
     <nav>
       <ul class="nav navbar-nav navbar-left">
         <li><a href="#/brands">Whisky List</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" ng-hide="user" >
-        <li><a href="#/login">Log In</a></li>
+      <ul class="nav navbar-nav navbar-right" ng-cloak>
+        <li ng-hide="user"><a href="#/login">Log In</a></li>
+        <li ng-show="user"><a href="" ng-click="signOut()">Log Out</a></li>
       </ul>
     </nav>
   </header>

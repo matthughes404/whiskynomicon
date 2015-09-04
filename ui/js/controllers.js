@@ -2,11 +2,11 @@ var app = angular.module('dramControllers', []);
 
 app.controller('HomeController', ['$rootScope', '$cookieStore',
   function($rootScope, $cookieStore) {
-    $rootScope.user = $cookieStore.get('user');    
+    $rootScope.user = $cookieStore.get('user');
   }]);
 
-app.controller('NavController', ['$rootScope', '$cookieStore', '$location',
-  function($rootScope, $cookieStore, $location) {
+app.controller('NavController', ['$rootScope', '$scope', '$cookieStore', '$location',
+  function($rootScope, $scope, $cookieStore, $location) {
     $rootScope.user = $cookieStore.get('user');
 
     if ($rootScope.user == null) {
@@ -14,6 +14,12 @@ app.controller('NavController', ['$rootScope', '$cookieStore', '$location',
     } else {
       $rootScope.home = "#/welcome";
     }
+
+    $scope.signOut = function() {
+      $cookieStore.remove('user');
+      $rootScope.user = null;
+      $location.path('/');
+    };
   }]);
 
 app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
@@ -95,8 +101,8 @@ app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams',
         $scope.brand = data;
       }).
       error(function(error) {
-        $location.path('/welcome');
         console.log(error);
+        $location.path('/welcome');
       });
 
     variantService.getList($routeParams.id).
@@ -114,6 +120,7 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$l
 
     if ($rootScope.user == null) {
       $location.path('/');
+      return;
     }
 
     userService.getActivity($scope.dateRange).
@@ -134,7 +141,6 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$l
 
         fa.push({ date: today, description: 'placeholder for now... copying user activity' });
         $scope.friendActivity = fa;
-        console.log($scope.friendActivity);
       }).
       error(function(error) {
         console.log(error);
@@ -178,6 +184,7 @@ app.controller('TasteDetailController', ['$rootScope', '$scope', '$location', '$
   function($rootScope, $scope, $location, $routeParams, tasteService) {
     if ($rootScope.user == null) {
       $location.path('/');
+      return;
     }
 
     tasteService.get($routeParams.id).
@@ -194,6 +201,7 @@ app.controller('BottleDetailController', ['$rootScope', '$scope', '$location', '
   function($rootScope, $scope, $location, $routeParams, bottleService) {
     if ($rootScope.user == null) {
       $location.path('/');
+      return;
     }
 
     bottleService.get($routeParams.id).

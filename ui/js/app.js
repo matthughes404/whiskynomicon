@@ -4,7 +4,6 @@ app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
-        homepage: true,
         templateUrl: 'partials/home.html',
         controller: 'HomeController'
       }).
@@ -47,6 +46,10 @@ app.config(['$routeProvider', '$locationProvider',
 
 app.run(['$rootScope', function($rootScope) {
       $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-          $rootScope.homepage = current.$$route.homepage;
+          if (current.$$route.controller == "HomeController") {
+            $rootScope.homepage = true;
+          } else {
+            $rootScope.homepage = false;
+          }
       });
   }]);
