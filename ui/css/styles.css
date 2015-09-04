@@ -114,11 +114,11 @@ th { font-weight: bold; color: #ccb555; }
   margin-bottom: 6px;
 }
 
-.bottle dt {
+.bottle dt, .taste dt {
   font-size: 11px;
   color: #CCB555;
 }
 
-.bottle dd {
+.bottle dd, .taste dd {
   margin-bottom: 10px;
 }

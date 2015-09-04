@@ -72,8 +72,8 @@ app.service('tasteService', ['$http', '$rootScope',
       return $http.get(endpoint + '/tastes', { headers: authHeaders($rootScope.user) });
     };
 
-    this.get = function(brandId, id) {
-
+    this.get = function(id) {
+      return $http.get(endpoint + '/tastes/' + id, { headers: authHeaders($rootScope.user) });
     };
 
     this.add = function(brandId, variant) {

@@ -1,0 +1,25 @@
+<div class="container taste">
+  <h1>{{ taste.brand }} <small>{{ taste.variant }}</small></h1>
+  <dl>
+    <dt ng-show="taste.style">Style</dt>
+    <dd ng-show="taste.style">{{ taste.style }}</dd>
+
+    <dt ng-show="taste.proof">Proof</dt>
+    <dd ng-show="taste.proof">{{ taste.proof }}</dd>
+
+    <dt ng-show="taste.cost">Price</dt>
+    <dd ng-show="taste.cost">{{ taste.cost | currency }}</dd>
+
+    <dt ng-show="taste.date">Enjoyed on</dt>
+    <dd ng-show="taste.date">{{ taste.date | date }}</dd>
+
+    <dt ng-show="taste.location">Enjoyed at</dt>
+    <dd ng-show="taste.location">{{ taste.location }}</dd>
+
+    <dt>Rating</dt>
+    <dd>{{ taste.rating }} / 5</dd>
+
+    <dt ng-show="taste.review">Review</dt>
+    <dd ng-show="taste.review">{{ taste.review }}</dd>
+  </dl>
+</div>

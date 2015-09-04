@@ -82,6 +82,7 @@ app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams',
         $scope.brand = data;
       }).
       error(function(error) {
+        $location.path('/welcome');
         console.log(error);
       });
 
@@ -106,6 +107,7 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userS
       }).
       error(function(error) {
         console.log(error);
+        $location.path('/welcome');
       });
 
     userService.getActivity($scope.dateRange).
@@ -121,6 +123,7 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userS
       }).
       error(function(error) {
         console.log(error);
+        $location.path('/welcome');
       });
 
     bottleService.getList().
@@ -129,6 +132,7 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userS
       }).
       error(function(error) {
         console.log(error);
+        $location.path('/welcome');
       });
 
     $scope.activityLink = function(data) {
@@ -151,14 +155,31 @@ app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
       }).
       error(function(error) {
         console.log(error);
+        $location.path('/welcome');
+      });
+  }]);
+
+app.controller('TasteDetailController', ['$rootScope', '$scope', '$location', '$routeParams', 'tasteService',
+  function($rootScope, $scope, $location, $routeParams, tasteService) {
+    if ($rootScope.user == null) {
+      $location.path('/');
+    }
+
+    tasteService.get($routeParams.id).
+      success(function(data) {
+        $scope.taste = data;
+      }).
+      error(function(error) {
+        console.log(error);
+        $location.path('/welcome');
       });
   }]);
 
 app.controller('BottleDetailController', ['$rootScope', '$scope', '$location', '$routeParams', 'bottleService',
   function($rootScope, $scope, $location, $routeParams, bottleService) {
-    //if ($rootScope.user == null) {
-    //  $location.path('/');
-    //}
+    if ($rootScope.user == null) {
+      $location.path('/');
+    }
 
     bottleService.get($routeParams.id).
       success(function(data) {
@@ -166,6 +187,7 @@ app.controller('BottleDetailController', ['$rootScope', '$scope', '$location', '
       }).
       error(function(error) {
         console.log(error);
+        $location.path('/welcome');
       });
   }]);
 
