@@ -3,6 +3,9 @@
   <div class="welcome row">
     <div class="col-md-4">
       <h2>Your Activity</h2>
+      <div class="loading" ng-hide="activity">
+        <i class="glyphicon glyphicon-refresh spinning"></i>
+      </div>
       <dl>
         <dt ng-repeat-start="a in activity | orderBy: '-date'">
           <a href="#">{{ a.date | date: 'short' }}</a>
@@ -16,6 +19,9 @@
 
     <div class="col-md-4">
       <h2>Friends' Activity</h2>
+      <div class="loading" ng-hide="friendActivity">
+        <i class="glyphicon glyphicon-refresh spinning"></i>
+      </div>
       <dl>
         <dt ng-repeat-start="fa in friendActivity | orderBy: '-date'">
           <a href="#">{{ fa.date | date: 'short' }}</a>
@@ -28,6 +34,9 @@
 
     <div class="bottles col-md-4">
       <h2>Your bottle collection</h2>
+      <div class="loading" ng-hide="bottles">
+        <i class="glyphicon glyphicon-refresh spinning"></i>
+      </div>
       <ul class="activity">
         <li ng-repeat="b in bottles | orderBy: ['brand', 'variant']">
           <a href="#">{{ b.brand }} {{ b.variant }}</a>
