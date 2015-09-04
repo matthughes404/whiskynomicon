@@ -186,9 +186,9 @@ Bottle.create({ user_id: 1, brand: 'Lagavulin', variant: '16yr', style: 'Single 
   purchase_date: DateTime.new(2015,8,15) })
 Bottle.create({ user_id: 1, brand: 'Knob Creek', variant: '', style: 'Bourbon', proof: 80,
   purchase_location: 'Total Wine', rating: 3.5, review: "Tasty bourbon!",
-  purchase_date: DateTime.new(2015,8,20) })
+  purchase_date: DateTime.new(2015,8,20,17,0,0) })
 
-Activity.create({ user_id: 1, description: "had a sip of Speyburn 10yr at home", date: "2015-08-15",
+Activity.create({ user_id: 1, description: "had a sip of Speyburn 10yr at home", date: DateTime.new(2015,7,13,18,0,0),
   activity_type: "taste", detail_id: 1 })
-Activity.create({ user_id: 1, description: "bought a bottle of Knob Creek at Total Wine", date: "2015-08-20",
+Activity.create({ user_id: 1, description: "bought a bottle of Knob Creek at Total Wine", date: DateTime.new(2015,8,20,17,0,0),
   activity_type: "bottle", detail_id: 4 })
