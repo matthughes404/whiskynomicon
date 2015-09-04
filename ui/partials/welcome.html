@@ -8,7 +8,7 @@
       </div>
       <dl>
         <dt ng-repeat-start="a in activity | orderBy: '-date'">
-          <a href="#">{{ a.date | date: 'short' }}</a>
+          <a ng-href="{{ activityLink(a) }}">{{ a.date | date: 'short' }}</a>
         </dt>
         <dd ng-repeat-end>
           You {{ a.description }}.
@@ -24,7 +24,7 @@
       </div>
       <dl>
         <dt ng-repeat-start="fa in friendActivity | orderBy: '-date'">
-          <a href="#">{{ fa.date | date: 'short' }}</a>
+          <a ng-href="{{ activityLink(fa) }}">{{ fa.date | date: 'short' }}</a>
         </dt>
         <dd ng-repeat-end>
           Friend {{ fa.description }}.

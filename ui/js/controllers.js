@@ -130,6 +130,17 @@ app.controller('WelcomeController', ['$rootScope', '$scope', '$location', 'userS
       error(function(error) {
         console.log(error);
       });
+
+    $scope.activityLink = function(data) {
+      switch (data.activity_type) {
+        case "bottle":
+          return "#/bottles/" + data.detail_id;
+        case "taste":
+          return "#/tastes/" + data.detail_id;
+        default:
+          return "#/welcome";
+      }
+    };
   }]);
 
 app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
