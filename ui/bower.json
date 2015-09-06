@@ -1,11 +1,11 @@
 {
-  "name": "dram",
+  "name": "whiskynomicon",
   "version": "0.0.1",
-  "homepage": "https://github.com/GenBurnside/dram",
+  "homepage": "https://github.com/GenBurnside/whiskynomicon",
   "authors": [
     "Matt Hughes <matthughes.tech@gmail.com>"
   ],
-  "description": "A personal whisky tasting and bottle tracker",
+  "description": "A whisky tasting and bottle tracker",
   "main": "index.html",
   "keywords": [
     "whisky",

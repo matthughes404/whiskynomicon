@@ -1,4 +1,4 @@
-var app = angular.module('dramControllers', []);
+var app = angular.module('whiskyControllers', []);
 
 app.controller('HomeController', ['$rootScope', '$cookieStore',
   function($rootScope, $cookieStore) {

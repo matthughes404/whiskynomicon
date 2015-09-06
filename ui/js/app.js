@@ -1,4 +1,4 @@
-var app = angular.module('dramApp', ['ngRoute', 'ngCookies', 'dramServices', 'dramControllers']);
+var app = angular.module('whiskyApp', ['ngRoute', 'ngCookies', 'whiskyServices', 'whiskyControllers']);
 
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
