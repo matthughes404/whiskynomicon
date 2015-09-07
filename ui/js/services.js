@@ -9,6 +9,24 @@ define(['app'], function (app) {
     this.signIn = function(credentials) {
       return $http.post(endpoint + '/auth/sign_in', credentials);
     };
+
+    this.getUser = function(response, headers) {
+      var user = {
+        //properties for UI
+        username: response.data.username,
+        name: response.data.name,
+        email: response.data.email,
+
+        //properties for auth requests
+        accessToken: headers("access-token"),
+        client: headers("client"),
+        expiry: headers("expiry"),
+        tokenType: headers("token-Type"),
+        uid: headers("uid")
+      }
+
+      return user;
+    };
   }]);
 
   app.service('brandService', ['$http', function($http) {

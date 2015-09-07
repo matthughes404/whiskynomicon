@@ -9,14 +9,16 @@ define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD)
           controller: 'HomeController',
           controllerUrl: 'controllers/home'
         })).
-        when('/register', {
+        when('/register', angularAMD.route({
           templateUrl: 'partials/register.html',
-          controller: 'RegisterController'
-        }).
-        when('/login', {
+          controller: 'RegisterController',
+          controllerUrl: 'controllers/register'
+        })).
+        when('/login', angularAMD.route({
           templateUrl: 'partials/login.html',
-          controller: 'LoginController'
-        }).
+          controller: 'LoginController',
+          controllerUrl: 'controllers/login'
+        })).
         when('/brands', angularAMD.route({
           templateUrl: 'partials/brands.html',
           controller: 'BrandsController',

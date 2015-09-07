@@ -1,67 +1,6 @@
 define(['app'], function (app) {
   var app = angular.module('whiskyControllers', []);
 
-  app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
-    function($rootScope, $scope, $location, authService) {
-      $scope.create = function(user) {
-        authService.register(user).
-          success(function(response, status, headers) {
-            var user = getUser(response, headers);
-            $rootScope.user = user;
-            $rootScope.authenticated = true;
-            $rootScope.home = "#/welcome";
-            $location.path('/welcome');
-          }).
-          error(function(response) {
-            console.log(response);
-
-            $scope.errors = {};
-
-            if (response.errors.email) {
-              $scope.errors.password = "This e-mail address has already been registerd"
-            }
-
-            if (response.errors.password) {
-              $scope.errors.password = "Passwords must be at least 8 characters"
-            }
-
-            if (response.errors.password_confirmation) {
-              $scope.errors.passwordMatch = "Passwords do not match"
-            }
-          });
-      };
-    }]);
-
-  app.controller('LoginController', ['$rootScope', '$scope', '$cookieStore', '$location', 'authService',
-    function($rootScope, $scope, $cookieStore, $location, authService) {
-      $rootScope.user = $cookieStore.get('user');
-
-      if ($rootScope.user != null) {
-        $rootScope.authenticated = true;
-        $rootScope.home = "#/welcome";
-        $location.path('/welcome');
-      }
-
-      $scope.signIn = function(credentials) {
-        authService.signIn(credentials).
-          success(function(response, status, headers) {
-            var user = getUser(response, headers);
-            $rootScope.user = user;
-            $cookieStore.put('user', user);
-            $rootScope.authenticated = true;
-            $rootScope.home = "#/welcome";
-            $location.path('/welcome');
-          }).
-          error(function(response) {
-            console.log(response);
-
-            if (response.errors && response.errors.length > 0) {
-              $scope.error = response.errors[0];
-            }
-          });
-      };
-    }]);
-
   app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$location', 'userService', 'bottleService',
     function($rootScope, $scope, $cookieStore, $location, userService, bottleService) {
       $rootScope.user = $cookieStore.get('user');
@@ -161,22 +100,4 @@ define(['app'], function (app) {
           $location.path('/welcome');
         });
     }]);
-
-  function getUser(response, headers) {
-    var user = {
-      //properties for UI
-      username: response.data.username,
-      name: response.data.name,
-      email: response.data.email,
-
-      //properties for auth requests
-      accessToken: headers("access-token"),
-      client: headers("client"),
-      expiry: headers("expiry"),
-      tokenType: headers("token-Type"),
-      uid: headers("uid")
-    }
-
-    return user;
-  }
 });
