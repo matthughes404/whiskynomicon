@@ -1,13 +1,14 @@
-define(['angularAMD', 'angular-route'], function (angularAMD) {
-  var app = angular.module('whiskyApp', ['ngRoute']);
+define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD) {
+  var app = angular.module('whiskyApp', ['ngRoute', 'ngCookies']);
 
   app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
       $routeProvider.
-        when('/', {
+        when('/', angularAMD.route({
           templateUrl: 'partials/home.html',
-          controller: 'HomeController'
-        }).
+          controller: 'HomeController',
+          controllerUrl: 'controllers/home'
+        })).
         when('/register', {
           templateUrl: 'partials/register.html',
           controller: 'RegisterController'
@@ -19,12 +20,13 @@ define(['angularAMD', 'angular-route'], function (angularAMD) {
         when('/brands', angularAMD.route({
           templateUrl: 'partials/brands.html',
           controller: 'BrandsController',
-          controllerUrl: 'controllers/brandsController'
+          controllerUrl: 'controllers/brands'
         })).
-        when('/brands/:id', {
+        when('/brands/:id', angularAMD.route({
           templateUrl: 'partials/brandDetail.html',
-          controller: 'BrandDetailController'
-        }).
+          controller: 'BrandDetailController',
+          controllerUrl: 'controllers/brandDetail'
+        })).
         when('/welcome', {
           templateUrl: 'partials/welcome.html',
           controller: 'WelcomeController'

@@ -1,17 +1,13 @@
 require.config({
     baseUrl: "js",
 
-/*
-<script src="bower_components/requirejs/requirejs.js"></script>
-*/
-
     paths: {
         'angular': '../bower_components/angular/angular',
         'angular-route': '../bower_components/angular-route/angular-route',
         'angular-cookies': '../bower_components/angular-cookies/angular-cookies',
         'angularAMD': '../bower_components/angularAMD/angularAMD'
     },
-    shim: { 'angularAMD': ['angular'], 'angular-route': ['angular'] },
+    shim: { 'angularAMD': ['angular'], 'angular-route': ['angular'], 'angular-cookies': ['angular'] },
     deps: ['app']
 });
 
@@ -20,5 +16,8 @@ require(
         'app',
         'services',
         'controllers',
-        'controllers/brandsController'
+        'controllers/brands',
+        'controllers/brandDetail',
+        'controllers/home',
+        'controllers/nav'
     ]);

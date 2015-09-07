@@ -1,28 +1,6 @@
 define(['app'], function (app) {
   var app = angular.module('whiskyControllers', []);
 
-  app.controller('HomeController', ['$rootScope', '$cookieStore',
-    function($rootScope, $cookieStore) {
-      $rootScope.user = $cookieStore.get('user');
-    }]);
-
-  app.controller('NavController', ['$rootScope', '$scope', '$cookieStore', '$location',
-    function($rootScope, $scope, $cookieStore, $location) {
-      $rootScope.user = $cookieStore.get('user');
-
-      if ($rootScope.user == null) {
-        $rootScope.home = "#/";
-      } else {
-        $rootScope.home = "#/welcome";
-      }
-
-      $scope.signOut = function() {
-        $cookieStore.remove('user');
-        $rootScope.user = null;
-        $location.path('/');
-      };
-    }]);
-
   app.controller('RegisterController', ['$rootScope', '$scope', '$location', 'authService',
     function($rootScope, $scope, $location, authService) {
       $scope.create = function(user) {
@@ -82,26 +60,6 @@ define(['app'], function (app) {
             }
           });
       };
-    }]);
-
-  app.controller('BrandDetailController', ['$rootScope', '$scope', '$routeParams', 'brandService', 'variantService',
-    function($rootScope, $scope, $routeParams, brandService, variantService) {
-      brandService.get($routeParams.id).
-        success(function(data) {
-          $scope.brand = data;
-        }).
-        error(function(error) {
-          console.log(error);
-          $location.path('/welcome');
-        });
-
-      variantService.getList($routeParams.id).
-        success(function(data) {
-          $scope.variants = data;
-        }).
-        error(function(error) {
-          console.log(error);
-        });
     }]);
 
   app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$location', 'userService', 'bottleService',

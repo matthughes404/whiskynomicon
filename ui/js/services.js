@@ -1,5 +1,4 @@
 define(['app'], function (app) {
-  //var app = angular.module('whiskyServices', []);
   var endpoint = 'http://localhost:3000';
 
   app.service('authService', ['$http', function($http, $httpProvider) {
