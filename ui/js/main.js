@@ -15,9 +15,5 @@ require(
     [
         'app',
         'services',
-        'controllers',
-        'controllers/brands',
-        'controllers/brandDetail',
-        'controllers/home',
         'controllers/nav'
     ]);
