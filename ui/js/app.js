@@ -29,22 +29,27 @@ define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD)
           controller: 'BrandDetailController',
           controllerUrl: 'controllers/brandDetail'
         })).
-        when('/welcome', {
+        when('/welcome', angularAMD.route({
           templateUrl: 'partials/welcome.html',
-          controller: 'WelcomeController'
-        }).
-        when('/tastes', {
-          templateUrl: 'partials/tastes.html',
-          controller: 'TastesController'
-        }).
-        when('/tastes/:id', {
+          controller: 'WelcomeController',
+          controllerUrl: 'controllers/welcome'
+        })).
+        when('/tastes', angularAMD.route({
+          templateUrl: 'partials/tastes.html'
+        })).
+        when('/tastes/:id', angularAMD.route({
           templateUrl: 'partials/tasteDetail.html',
-          controller: 'TasteDetailController'
-        }).
-        when('/bottles/:id', {
+          controller: 'TasteDetailController',
+          controllerUrl: 'controllers/tasteDetail'
+        })).
+        when('/bottles/', angularAMD.route({
+          templateUrl: 'partials/bottles.html'
+        })).
+        when('/bottles/:id', angularAMD.route({
           templateUrl: 'partials/bottleDetail.html',
-          controller: 'BottleDetailController'
-        }).
+          controller: 'BottleDetailController',
+          controllerUrl: 'controllers/bottleDetail'
+        })).
         otherwise({
           redirectTo: '/'
         });

@@ -1,6 +1,4 @@
 define(['app'], function (app) {
-  var app = angular.module('whiskyControllers', []);
-
   app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$location', 'userService', 'bottleService',
     function($rootScope, $scope, $cookieStore, $location, userService, bottleService) {
       $rootScope.user = $cookieStore.get('user');
@@ -53,51 +51,5 @@ define(['app'], function (app) {
             return "#/welcome";
         }
       };
-    }]);
-
-  app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
-    function($rootScope, $scope, tasteService) {
-      tasteService.getList().
-        success(function(data) {
-          $scope.tastes = data;
-        }).
-        error(function(error) {
-          console.log(error);
-          $location.path('/welcome');
-        });
-    }]);
-
-  app.controller('TasteDetailController', ['$rootScope', '$scope', '$location', '$routeParams', 'tasteService',
-    function($rootScope, $scope, $location, $routeParams, tasteService) {
-      if ($rootScope.user == null) {
-        $location.path('/');
-        return;
-      }
-
-      tasteService.get($routeParams.id).
-        success(function(data) {
-          $scope.taste = data;
-        }).
-        error(function(error) {
-          console.log(error);
-          $location.path('/welcome');
-        });
-    }]);
-
-  app.controller('BottleDetailController', ['$rootScope', '$scope', '$location', '$routeParams', 'bottleService',
-    function($rootScope, $scope, $location, $routeParams, bottleService) {
-      if ($rootScope.user == null) {
-        $location.path('/');
-        return;
-      }
-
-      bottleService.get($routeParams.id).
-        success(function(data) {
-          $scope.bottle = data;
-        }).
-        error(function(error) {
-          console.log(error);
-          $location.path('/welcome');
-        });
     }]);
 });
