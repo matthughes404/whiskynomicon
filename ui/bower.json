@@ -27,6 +27,6 @@
     "angular-route": "~1.4.3",
     "angular-cookies": "~1.4.3",
     "requirejs": "~2.1.20",
-    "angularAMD": "~0.2.1"
+    "q": "#1.0.1"
   }
 }

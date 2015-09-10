@@ -1,4 +1,7 @@
-define(['app'], function (app) {
+/*
+require(['app'], function (app) {
+  //var app = angular.module('whiskyApp');
+
   app.controller('NavController', ['$rootScope', '$scope', '$cookieStore', '$location',
     function($rootScope, $scope, $cookieStore, $location) {
       $rootScope.user = $cookieStore.get('user');
@@ -16,3 +19,4 @@ define(['app'], function (app) {
       };
     }]);
 });
+*/

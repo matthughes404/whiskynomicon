@@ -1,4 +1,4 @@
-define(['app'], function (app) {
+define(['whiskyApp'], function (app) {
   app.controller('HomeController', ['$rootScope', '$cookieStore',
     function($rootScope, $cookieStore) {
       $rootScope.user = $cookieStore.get('user');

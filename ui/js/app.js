@@ -1,69 +1,84 @@
-define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD) {
-  var app = angular.module('whiskyApp', ['ngRoute', 'ngCookies']);
+define([
+    'angular',
+    'angularRoute',
+    'angularCookies',
+    'q',
+    './controllers/home'
+], function () {
+    'use strict';
+    
+    var app = angular.module('app', ['ngRoute', 'ngCookies']);
 
-  app.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
-      $routeProvider.
-        when('/', angularAMD.route({
-          templateUrl: 'partials/home.html',
-          controller: 'HomeController',
-          controllerUrl: 'controllers/home'
-        })).
-        when('/register', angularAMD.route({
-          templateUrl: 'partials/register.html',
-          controller: 'RegisterController',
-          controllerUrl: 'controllers/register'
-        })).
-        when('/login', angularAMD.route({
-          templateUrl: 'partials/login.html',
-          controller: 'LoginController',
-          controllerUrl: 'controllers/login'
-        })).
-        when('/brands', angularAMD.route({
-          templateUrl: 'partials/brands.html',
-          controller: 'BrandsController',
-          controllerUrl: 'controllers/brands'
-        })).
-        when('/brands/:id', angularAMD.route({
-          templateUrl: 'partials/brandDetail.html',
-          controller: 'BrandDetailController',
-          controllerUrl: 'controllers/brandDetail'
-        })).
-        when('/welcome', angularAMD.route({
-          templateUrl: 'partials/welcome.html',
-          controller: 'WelcomeController',
-          controllerUrl: 'controllers/welcome'
-        })).
-        when('/tastes', angularAMD.route({
-          templateUrl: 'partials/tastes.html'
-        })).
-        when('/tastes/:id', angularAMD.route({
-          templateUrl: 'partials/tasteDetail.html',
-          controller: 'TasteDetailController',
-          controllerUrl: 'controllers/tasteDetail'
-        })).
-        when('/bottles/', angularAMD.route({
-          templateUrl: 'partials/bottles.html'
-        })).
-        when('/bottles/:id', angularAMD.route({
-          templateUrl: 'partials/bottleDetail.html',
-          controller: 'BottleDetailController',
-          controllerUrl: 'controllers/bottleDetail'
-        })).
-        otherwise({
-          redirectTo: '/'
-        });
-    }]);
+    app.config(['$routeProvider', '$locationProvider',
+      function($routeProvider, $locationProvider, $rootScope) {
+        $routeProvider.
+          when('/', {
+            templateUrl: 'partials/home.html',
+            controller: 'HomeController'
+          }).
+          /*
+          when('/register', {
+            templateUrl: 'partials/register.html',
+            controller: require(['controllers/register'])
+          }).
+          when('/login', {
+            templateUrl: 'partials/login.html',
+            controller: require(['controllers/login'])
+          }).
+          when('/brands', {
+            templateUrl: 'partials/brands.html',
+            controller: require(['controllers/brands'])
+          }).
+          when('/brands/:id', {
+            templateUrl: 'partials/brandDetail.html',
+            controller: require(['controllers/brandDetail'])
+          }).
+          when('/welcome', {
+            templateUrl: 'partials/welcome.html',
+            controller: require(['controllers/welcome'])
+          }).
+          when('/tastes', {
+            templateUrl: 'partials/tastes.html'
+          }).
+          when('/tastes/:id', {
+            templateUrl: 'partials/tasteDetail.html',
+            controller: require(['controllers/tasteDetail'])
+          }).
+          when('/bottles/', {
+            templateUrl: 'partials/bottles.html'
+          }).
+          when('/bottles/:id', {
+            templateUrl: 'partials/bottleDetail.html',
+            controller: require(['controllers/bottleDetail'])
+          }).
+          */
+          otherwise({
+            redirectTo: '/'
+          });
+      }]);
 
-  app.run(['$rootScope', function($rootScope) {
-        $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-            if (current.$$route.controller == "HomeController") {
-              $rootScope.homepage = true;
-            } else {
-              $rootScope.homepage = false;
-            }
-        });
-    }]);
+    var resolveController = ['$q', 'path', function resolveController($q, path) {
+        var deferred = $q.defer();
+        var script = document.createElement('script');
+        script.src = path;
+        script.onload = function() {
+            $scope.$apply(deferred.resolve());
+        };
+        document.body.appendChild(script);
+        return deferred.promise;
+    }];
 
-  return angularAMD.bootstrap(app);
+    /*
+    app.run(['$rootScope', function($rootScope) {
+          $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+              if (current.$$route.controller == "HomeController") {
+                $rootScope.homepage = true;
+              } else {
+                $rootScope.homepage = false;
+              }
+          });
+      }]);
+    */
+
+    return app;
 });

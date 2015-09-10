@@ -1,4 +1,7 @@
-define(['app'], function (app) {
+/*
+require(['app'], function (app) {
+  //var app = angular.module('whiskyApp');
+
   var endpoint = 'http://localhost:3000';
 
   app.service('authService', ['$http', function($http, $httpProvider) {
@@ -90,3 +93,4 @@ define(['app'], function (app) {
     return headers;
   }
 });
+*/
