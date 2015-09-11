@@ -15,23 +15,7 @@
         </dd>
       </dl>
       <p class="error" ng-show="activityError" ng-cloak>{{ activityError }}</p>
-    </div>
-
-    <div class="col-md-4">
-      <h2>Friends' Activity</h2>
-      <div class="loading" ng-hide="friendActivity || friendError">
-        <i class="glyphicon glyphicon-refresh spinning"></i>
-      </div>
-      <dl ng-show="friendActivity" ng-cloak>
-        <dt ng-repeat-start="fa in friendActivity | orderBy: '-date'">
-          <a ng-href="{{ activityLink(fa) }}">{{ fa.date | date: 'short' }}</a>
-        </dt>
-        <dd ng-repeat-end>
-          Friend {{ fa.description }}.
-        </dd>
-      </dl>
-      <p class="error" ng-show="friendError" ng-cloak>{{ friendError }}</p>
-    </div>
+    </div>    
 
     <div class="bottles col-md-4">
       <h2>Your bottle collection</h2>

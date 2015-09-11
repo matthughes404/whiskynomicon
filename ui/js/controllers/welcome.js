@@ -19,21 +19,6 @@ define(['app'], function (app) {
           console.log(error);
         });
 
-      userService.getActivity($scope.dateRange).
-        success(function(data) {
-          var fa = data;
-          var last = data.length - 1;
-          fa.splice(last, 1);
-          var today = new Date().toISOString();
-
-          fa.push({ date: today, description: 'placeholder for now... copying user activity' });
-          $scope.friendActivity = fa;
-        }).
-        error(function(error) {
-          $scope.friendError = errorService.apiError;
-          console.log(error);
-        });
-
       bottleService.getList().
         success(function(data) {
           $scope.bottles = data;
