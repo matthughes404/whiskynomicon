@@ -23,5 +23,8 @@
     <br />
 
     <input type="submit" class="btn" ng-click="register.$valid && create(user)" value="Submit" />
+
+    <br /><br />
+    <p class="error" ng-show="errors.message">{{ errors.message }}</p>
   </form>
 </div>

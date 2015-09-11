@@ -8,12 +8,12 @@
     <label>Password:</label>
     <input type="password" ng-model="credentials.password" required /><br />
 
-    <p class="error" ng-show="error">{{ error }}</p>
-
     <input type="submit" class="btn" ng-click="login.$valid && signIn(credentials)" value="Submit" />
+
   </form>
 
-  <br /><br />
+  <br />
+  <p class="error" ng-show="error">{{ error }}</p>
 
   <p>Don't have an account? <a href="#/register">Register now!</a></p><br />
 </div>

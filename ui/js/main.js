@@ -15,5 +15,6 @@ require(
     [
         'app',
         'services',
-        'controllers/nav'
+        'controllers/nav',
+        'services/error'
     ]);

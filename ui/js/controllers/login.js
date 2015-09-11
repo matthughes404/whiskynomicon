@@ -1,6 +1,6 @@
 define(['app'], function (app) {
-  app.controller('LoginController', ['$rootScope', '$scope', '$cookieStore', '$location', 'authService',
-    function($rootScope, $scope, $cookieStore, $location, authService) {
+  app.controller('LoginController', ['$rootScope', '$scope', '$cookieStore', '$location', 'authService', 'errorService',
+    function($rootScope, $scope, $cookieStore, $location, authService, errorService) {
       $rootScope.user = $cookieStore.get('user');
 
       if ($rootScope.user != null) {
@@ -22,8 +22,10 @@ define(['app'], function (app) {
           error(function(response) {
             console.log(response);
 
-            if (response.errors && response.errors.length > 0) {
+            if (response != null && response.errors && response.errors.length > 0) {
               $scope.error = response.errors[0];
+            } else {
+              $scope.error = errorService.apiError;
             }
           });
       };
