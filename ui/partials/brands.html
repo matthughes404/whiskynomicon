@@ -2,11 +2,12 @@
   <h1>Brands</h1>
 
   <ul id="brandList">
-    <div class="loading" ng-hide="brands">
+    <div class="loading" ng-hide="brands || error">
       <i class="glyphicon glyphicon-refresh spinning"></i>
     </div>
     <li ng-repeat="brand in brands">
       <a href="#/brands/{{ brand.id }}">{{ brand.name }}</a>
     </li>
+    <p class="error" ng-show="error">{{ error }}</p>
   </ul>
 </div>

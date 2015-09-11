@@ -3,26 +3,26 @@
   <div class="welcome row">
     <div class="col-md-4">
       <h2>Your Activity</h2>
-      <div class="loading" ng-hide="activity">
+      <div class="loading" ng-hide="activity || activityError">
         <i class="glyphicon glyphicon-refresh spinning"></i>
       </div>
-      <dl>
+      <dl ng-show="activity" ng-cloak>
         <dt ng-repeat-start="a in activity | orderBy: '-date'">
           <a ng-href="{{ activityLink(a) }}">{{ a.date | date: 'short' }}</a>
         </dt>
         <dd ng-repeat-end>
           You {{ a.description }}.
         </dd>
-        </li>
-      </ul>
+      </dl>
+      <p class="error" ng-show="activityError" ng-cloak>{{ activityError }}</p>
     </div>
 
     <div class="col-md-4">
       <h2>Friends' Activity</h2>
-      <div class="loading" ng-hide="friendActivity">
+      <div class="loading" ng-hide="friendActivity || friendError">
         <i class="glyphicon glyphicon-refresh spinning"></i>
       </div>
-      <dl>
+      <dl ng-show="friendActivity" ng-cloak>
         <dt ng-repeat-start="fa in friendActivity | orderBy: '-date'">
           <a ng-href="{{ activityLink(fa) }}">{{ fa.date | date: 'short' }}</a>
         </dt>
@@ -30,18 +30,20 @@
           Friend {{ fa.description }}.
         </dd>
       </dl>
+      <p class="error" ng-show="friendError" ng-cloak>{{ friendError }}</p>
     </div>
 
     <div class="bottles col-md-4">
       <h2>Your bottle collection</h2>
-      <div class="loading" ng-hide="bottles">
+      <div class="loading" ng-hide="bottles || bottleError">
         <i class="glyphicon glyphicon-refresh spinning"></i>
       </div>
-      <ul class="activity">
+      <ul class="activity" ng-show="bottles" ng-cloak>
         <li ng-repeat="b in bottles | orderBy: ['brand', 'variant']">
           <a ng-href="#/bottles/{{ b.id }}">{{ b.brand }} {{ b.variant }}</a>
         </li>
       </ul>
+      <p class="error" ng-show="bottleError" ng-cloak>{{ bottleError }}</p>
     </div>
   </div>
 </section>

@@ -1,6 +1,8 @@
 define(['app'], function (app) {
-  app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$location', 'userService', 'bottleService',
-    function($rootScope, $scope, $cookieStore, $location, userService, bottleService) {
+  app.controller('WelcomeController', ['$rootScope', '$scope', '$cookieStore', '$location',
+    'userService', 'bottleService', 'errorService',
+    function($rootScope, $scope, $cookieStore, $location,
+      userService, bottleService, errorService) {
       $rootScope.user = $cookieStore.get('user');
 
       if ($rootScope.user == null) {
@@ -13,8 +15,8 @@ define(['app'], function (app) {
           $scope.activity = data;
         }).
         error(function(error) {
+          $scope.activityError = errorService.apiError;
           console.log(error);
-          $location.path('/welcome');
         });
 
       userService.getActivity($scope.dateRange).
@@ -28,8 +30,8 @@ define(['app'], function (app) {
           $scope.friendActivity = fa;
         }).
         error(function(error) {
+          $scope.friendError = errorService.apiError;
           console.log(error);
-          $location.path('/welcome');
         });
 
       bottleService.getList().
@@ -37,8 +39,8 @@ define(['app'], function (app) {
           $scope.bottles = data;
         }).
         error(function(error) {
+          $scope.bottleError = errorService.apiError;
           console.log(error);
-          $location.path('/welcome');
         });
 
       $scope.activityLink = function(data) {
