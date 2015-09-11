@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-  app.controller('TastesController', ['$rootScope', '$scope', 'tasteService',
+  app.controller('TasteListController', ['$rootScope', '$scope', 'tasteService',
     function($rootScope, $scope, tasteService) {
       tasteService.getList().
         success(function(data) {

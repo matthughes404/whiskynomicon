@@ -35,12 +35,14 @@ define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD)
           controllerUrl: 'controllers/welcome'
         })).
         when('/tastes', angularAMD.route({
-          templateUrl: 'partials/tastes.html'
+          templateUrl: 'partials/tastes/index.html',
+          controller: 'TasteListController',
+          controllerUrl: 'controllers/tastes/list'
         })).
         when('/tastes/:id', angularAMD.route({
-          templateUrl: 'partials/tasteDetail.html',
+          templateUrl: 'partials/tastes/detail.html',
           controller: 'TasteDetailController',
-          controllerUrl: 'controllers/tasteDetail'
+          controllerUrl: 'controllers/tastes/detail'
         })).
         when('/bottles/', angularAMD.route({
           templateUrl: 'partials/bottles.html'
