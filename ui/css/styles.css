@@ -58,8 +58,8 @@ input[type="text"], input[type="password"] {
   margin-bottom: 15px;
 }
 
-table { margin-left: -10px; }
-th, td { padding: 2px 10px; }
+table.details { margin-left: -10px; }
+.details th, .details td { padding: 2px 10px; }
 
 th { font-weight: bold; color: #ccb555; }
 
