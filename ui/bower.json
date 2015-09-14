@@ -27,7 +27,8 @@
     "angular-route": "~1.4.5",
     "angular-cookies": "~1.4.5",
     "requirejs": "~2.1.20",
-    "angularAMD": "~0.2.1"
+    "angularAMD": "~0.2.1",
+    "angular-bootstrap": "~0.13.4"
   },
   "resolutions": {
     "angular": "1.4.5"

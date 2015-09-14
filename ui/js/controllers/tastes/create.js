@@ -12,6 +12,10 @@ define(['app'], function (app) {
 
       $scope.brands = [];
       $scope.variants = [];
+      $scope.date = new Date();
+      
+      var today = new Date();
+      $scope.maxDate = today.setDate(today.getDate() + 1);
 
       brandService.getList().
         success(function(data) {

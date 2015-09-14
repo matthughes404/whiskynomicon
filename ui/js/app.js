@@ -1,5 +1,5 @@
-define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD) {
-  var app = angular.module('whiskyApp', ['ngRoute', 'ngCookies']);
+define(['angularAMD', 'angular-route', 'angular-cookies', 'angular-bootstrap'], function (angularAMD) {
+  var app = angular.module('whiskyApp', ['ngRoute', 'ngCookies', 'ui.bootstrap']);
 
   app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
