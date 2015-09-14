@@ -122,3 +122,7 @@ th { font-weight: bold; color: #ccb555; }
 .bottle dd, .taste dd {
   margin-bottom: 10px;
 }
+
+.nopad {
+  padding: 0;
+}

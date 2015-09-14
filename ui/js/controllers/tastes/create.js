@@ -23,6 +23,11 @@ define(['app'], function (app) {
         });
 
       $scope.getVariants = function(brandId) {
+        var brand = $filter('filter')($scope.brands, { id: brandId }, false)
+        if (brand.length > 0) {
+          $scope.brand = brand[0];
+        }
+
         variantService.getList(brandId).
           success(function(data) {
             if (data.length > 0) {
