@@ -126,3 +126,11 @@ th { font-weight: bold; color: #ccb555; }
 .nopad {
   padding: 0;
 }
+
+.timepicker input {
+  margin-bottom: 0;
+}
+
+.rating {
+  width: 45px;
+}

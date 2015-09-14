@@ -17,7 +17,18 @@
           <br />
         </div>
 
+        <div class="col-md-3 col-md-offset-1 nopad">
+          <label>Date:</label>
+          <datepicker ng-model="date.date" max-date="maxDate" show-weeks="false"></datepicker>
+        </div>
+
+        <div class="col-md-3 nopad">
+          <label>Time:</label>
+          <timepicker ng-model="date.time" class="timepicker"></timepicker>
+        </div>
+
         <div class="clearfix"></div>
+        <br />
 
         <table class="details" ng-show="variant" ng-cloak>
           <tr>
@@ -33,10 +44,17 @@
         </table>
         <br />
 
-        <datepicker ng-model="date" max-date="maxDate" show-weeks="false"></datepicker>
-        <br />
+        <div class="col-md-3 nopad">
+          <label>Review:</label>
+          <textarea class="form-control" rows="3" ng-model="review"></textarea>
+          <br />
 
-        <input type="submit" class="btn" ng-click="taste.$valid" value="Submit" />
+          <label>Rating:</label>
+          <input type="text" class="form-control rating" ng-model="rating" /> out of 5
+          <br />
+
+          <input type="submit" class="btn" ng-click="taste.$valid" value="Submit" />
+        </div>
       </form>
     </div>
   </div>

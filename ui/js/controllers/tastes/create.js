@@ -12,8 +12,16 @@ define(['app'], function (app) {
 
       $scope.brands = [];
       $scope.variants = [];
-      $scope.date = new Date();
-      
+
+      var date = new Date();
+      $scope.date = {};
+      $scope.date.date = date;
+
+      date.setHours(12);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      $scope.date.time = date;
+
       var today = new Date();
       $scope.maxDate = today.setDate(today.getDate() + 1);
 
