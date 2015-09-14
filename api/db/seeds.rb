@@ -38,7 +38,7 @@ Brand.create({ name: "Jack Daniels",
     Variant.create({ name: "Old No. 7", style: 'Tenessee whiskey', proof: 80 }),
     Variant.create({ name: "Gentleman Jack", style: 'Tenessee whiskey', proof: 80 }),
   ]})
-Brand.create({ name: "Jim Bean",
+Brand.create({ name: "Jim Beam",
   variants: [
     Variant.create({ style: 'Bourbon', proof: 80 }),
     Variant.create({ name: "Black", style: 'Bourbon', proof: 86 }),
