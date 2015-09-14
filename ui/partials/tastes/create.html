@@ -1,0 +1,36 @@
+<div class="container taste">
+  <h1>Log a Taste</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <form name="taste" novalidate>
+        <label>Brand:</label>
+        <select class="form-control" ng-model="brandId" ng-disabled="!brands"
+          ng-change="getVariants(brandId)" ng-options="b.id as b.name for b in brands">
+        </select>
+        <br />
+
+        <label>Variant:</label>
+        <select class="form-control" ng-model="variantId" ng-disabled="!variants || variants.length == 0"
+          ng-change="loadDetails(variantId)" ng-options="v.id as v.name || 'Standard' for v in variants">
+        </select>
+        <br />
+
+        <table ng-show="variant" ng-cloak>
+          <tr>
+            <th>Variant</th>
+            <th>Style</th>
+            <th>Proof</th>
+          </tr>
+          <tr>
+            <td>{{ variant.name || "Standard" }}</td>
+            <td>{{ variant.style }}</td>
+            <td>{{ variant.proof }}</td>
+          </tr>
+        </table>
+        <br />
+
+        <input type="submit" class="btn" ng-click="taste.$valid" value="Submit" />
+      </form>
+    </div>
+  </div>
+</div>
