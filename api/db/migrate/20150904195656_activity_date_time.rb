@@ -1,4 +1,4 @@
-class ActivityDateTime < ActiveRecord::Migration
+class ActivityDateTime < ActiveRecord::Migration[5.1]
   def change
     change_column :activities, :date, :datetime
   end

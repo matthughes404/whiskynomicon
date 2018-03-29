@@ -1,4 +1,4 @@
-class CreateTastes < ActiveRecord::Migration
+class CreateTastes < ActiveRecord::Migration[5.1]
   def change
     create_table :tastes do |t|
       t.text :brand
